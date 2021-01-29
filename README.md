@@ -1,16 +1,75 @@
 # renda_clone
 
-A new Flutter project.
+## state
 
-## Getting Started
+- app_state user,users,
+- app_state の管理 Provider を使用
+- 連打マシーンのロジックを作成。
 
-This project is a starting point for a Flutter application.
+## view
 
-A few resources to get you started if this is your first Flutter project:
+- view の作成(Widget イメージ)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+  - header
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  ```
+    <Row>
+      <Children>
+        <>
+          <selectA...C></selectA...C>
+          <userResultA...C></userResultA...C>
+        </>
+      </Children>
+    </Row>
+  ```
+
+  - body
+
+  ```
+        <>
+          <title></title>
+            <input></input>
+            <Row>
+            <selectA...C></selectA...C>
+            </Row>
+          <button></button>
+        </>
+  ```
+
+  - footer
+
+  ```
+      <Row>
+        <Children>
+          <Rolls></Rolls>
+          <Board></Board>
+        </Children>
+      </Row>
+  ```
+
+## model
+
+- model の作成
+
+  - User
+
+  ```
+  class User
+  final id
+  final name
+  final resultA
+  final resultB
+  final resultC
+  ```
+
+  - Users
+
+  ```
+  class Users
+  final id
+  final <User>List user
+  ```
+
+## Game
+
+とりあえずあとで
