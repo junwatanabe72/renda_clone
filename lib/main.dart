@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import "components/templetes/backgroundImage.dart";
+import "components/templetes/header/top.dart";
 
 void main() {
   runApp(MyApp());
@@ -19,29 +20,11 @@ class MyApp extends StatelessWidget {
             BackgroundImage(),
             Scaffold(
               backgroundColor: Colors.transparent,
-              appBar: AppBar(
-                title: const Text("Standard"),
-                backgroundColor: Colors.transparent,
-                elevation: 0.0,
-                actions: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.settings),
-                    onPressed: () {
-                      // Pressed Action
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.menu),
-                    onPressed: () {
-                      // Pressed Action
-                    },
-                  ),
-                ],
-              ),
+              appBar: Header(),
               body: Container(
                 color: Colors.transparent,
               ),
-            ),
+            )
           ],
         ));
   }
