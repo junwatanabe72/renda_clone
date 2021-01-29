@@ -1,14 +1,33 @@
 # renda_clone
 
-## state
+## app_state
 
-- app_state user,users,
-- app_state の管理 Provider を使用
-- 連打マシーンのロジックを作成。
+- app_state user,users の ChangeNotifierWidget 作成
+- app_state の管理は Provider を使用
+
+## model
+
+- User
+
+  ```
+  class User
+  final id
+  final name
+  final resultA
+  final resultB
+  final resultC
+  ```
+
+- Users
+
+  ```
+  class Users
+  final <User>List user
+  ```
 
 ## view
 
-- view の作成(Widget イメージ)
+- toppage view の作成(Widget イメージ)
 
   - header
 
@@ -16,8 +35,8 @@
     <Row>
       <Children>
         <>
-          <selectA...C></selectA...C>
-          <userResultA...C></userResultA...C>
+          <SelectA...C></SelectA...C>
+          <UserResultA...C></UserResultA...C>
         </>
       </Children>
     </Row>
@@ -27,12 +46,12 @@
 
   ```
         <>
-          <title></title>
-            <input></input>
+          <Title></Title>
+            <Input></Input>
             <Row>
             <selectA...C></selectA...C>
             </Row>
-          <button></button>
+          <Button></Button>
         </>
   ```
 
@@ -45,29 +64,6 @@
           <Board></Board>
         </Children>
       </Row>
-  ```
-
-## model
-
-- model の作成
-
-  - User
-
-  ```
-  class User
-  final id
-  final name
-  final resultA
-  final resultB
-  final resultC
-  ```
-
-  - Users
-
-  ```
-  class Users
-  final id
-  final <User>List user
   ```
 
 ## Game
