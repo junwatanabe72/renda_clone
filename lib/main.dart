@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import "components/templetes/backgroundImage.dart";
 
 void main() {
   runApp(MyApp());
@@ -15,16 +16,7 @@ class MyApp extends StatelessWidget {
         ),
         home: Stack(
           children: <Widget>[
-            Container(
-              height: double.infinity,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: const AssetImage('images/lake.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
+            BackgroundImage(),
             Scaffold(
               backgroundColor: Colors.transparent,
               appBar: AppBar(
