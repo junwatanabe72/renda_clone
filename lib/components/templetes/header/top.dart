@@ -4,6 +4,9 @@ import "../../../util/var/index.dart";
 
 // StatelessWidgetを継承
 class Header extends StatelessWidget with PreferredSizeWidget {
+  final double height;
+  final double width;
+  Header({this.height, this.width});
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
@@ -13,7 +16,9 @@ class Header extends StatelessWidget with PreferredSizeWidget {
     final modesKey = gameModes.keys.toList();
 
     return Container(
-        padding: EdgeInsets.all(10),
+        width: this.width,
+        height: this.height,
+        padding: EdgeInsets.all(5),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: modesKey

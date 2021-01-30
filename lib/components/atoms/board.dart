@@ -14,9 +14,18 @@ class Board extends StatelessWidget {
             width: 2.0,
           )),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text("LeaderBoard",
-            style: TextStyle(fontWeight: FontWeight.normal, fontSize: 20)),
-        ...new List.generate(10, (i) => Text("${i + 1}.user: 20.23s")),
+        Text("Leaderboard",
+            style: TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 20,
+              height: 1.0,
+            )),
+        ...new List.generate(
+            10,
+            (i) => Text("${i + 1}.user: 20.23s",
+                style: TextStyle(
+                  height: 1.0,
+                ))),
       ]),
     );
   }

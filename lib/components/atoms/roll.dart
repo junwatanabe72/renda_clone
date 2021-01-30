@@ -12,12 +12,13 @@ class Roll extends StatelessWidget {
       .map((rolls) =>
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             ...rolls
-                .map((text) => Text(
-                      text,
-                    ))
+                .map((text) => Text(text,
+                    style: TextStyle(
+                      height: 1.0,
+                    )))
                 .toList(),
             Padding(
-              padding: EdgeInsets.all(5),
+              padding: EdgeInsets.all(3),
             )
           ]))
       .toList();

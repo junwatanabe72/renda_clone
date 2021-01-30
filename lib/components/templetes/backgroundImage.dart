@@ -8,10 +8,10 @@ class BackgroundImage extends StatelessWidget {
       height: double.infinity,
       width: double.infinity,
       // decoration: BoxDecoration(
-      // image: DecorationImage(
-      // image: const AssetImage('images/lake.jpg'),
-      // fit: BoxFit.cover,
-      // ),
+      //   image: DecorationImage(
+      //     image: const AssetImage('images/lake.jpg'),
+      //     fit: BoxFit.cover,
+      //   ),
       // ),
     );
   }
