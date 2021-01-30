@@ -4,7 +4,7 @@ import "../../util/var/index.dart";
 class Score extends StatelessWidget {
   final int score;
   final String mode;
-  Score({this.score = 0, this.mode});
+  Score({this.score = 0, @required this.mode});
 
   @override
   Widget build(BuildContext context) {
