@@ -11,13 +11,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'renda_clone',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           textTheme: TextTheme(
             bodyText1: TextStyle(),
             bodyText2: TextStyle(),
           ).apply(
             bodyColor: Colors.white,
-            // displayColor: Colors.blue,
           ),
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
