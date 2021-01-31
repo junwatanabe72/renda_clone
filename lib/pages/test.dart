@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'dart:io';
 import 'package:renda_clone/components/atoms/input.dart';
 import 'package:renda_clone/components/organisims/top/selectButtons.dart';
+import 'package:renda_clone/stores/mode.dart';
 import 'package:renda_clone/stores/user.dart';
 import "../components/templetes/header/top.dart";
 
@@ -10,6 +11,7 @@ class Test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _user = Provider.of<UserStore>(context);
+    final _mode = Provider.of<ModeStore>(context);
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     var maxHeight = size.height - padding.top - padding.bottom;
@@ -34,7 +36,9 @@ class Test extends StatelessWidget {
         height: headerHeight,
       ),
       body: Column(children: [
-        SelectButtons(width: buttonWidth, height: buttonHeight),
+        SelectButtons(
+            mode: _mode.mode, width: buttonWidth, height: buttonHeight),
+        Text(_mode.mode),
         Input(userName: name),
         Text(name)
       ]),

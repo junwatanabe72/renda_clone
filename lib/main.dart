@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:renda_clone/stores/mode.dart';
 import 'package:renda_clone/stores/user.dart';
 import "components/templetes/backgroundImage.dart";
 // import 'pages/index.dart';
@@ -11,8 +12,11 @@ void main() {
       // providersにList<ChangeNotifierProvider>を指定する
       providers: [
         // ChangeNotifierProviderはcreateにデリゲートを取り、この中でChangeNotifierを初期化して返す
-        ChangeNotifierProvider(
+        ChangeNotifierProvider<UserStore>(
           create: (context) => UserStore(),
+        ),
+        ChangeNotifierProvider<ModeStore>(
+          create: (context) => ModeStore(),
         )
       ], child: MyApp()));
 }
