@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:renda_clone/components/atoms/button.dart';
 import 'package:renda_clone/util/var/index.dart';
-
-import 'button.dart';
 
 class SelectButtons extends StatelessWidget {
   final double height;

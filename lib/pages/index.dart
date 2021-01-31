@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:ui';
-import 'package:renda_clone/components/atoms/board.dart';
 import 'package:renda_clone/components/atoms/button.dart';
-import 'package:renda_clone/components/atoms/roll.dart';
-import 'package:renda_clone/components/atoms/selectButtons.dart';
-import 'package:renda_clone/components/atoms/userName.dart';
-import 'package:renda_clone/components/atoms/title.dart';
+import 'package:renda_clone/components/organisims/top/board.dart';
+import 'package:renda_clone/components/organisims/top/roll.dart';
+import 'package:renda_clone/components/organisims/top/selectButtons.dart';
+import 'package:renda_clone/components/organisims/top/title.dart';
+import 'package:renda_clone/components/organisims/top/userName.dart';
 import "../components/templetes/header/top.dart";
 
 class Top extends StatelessWidget {
@@ -24,43 +24,47 @@ class Top extends StatelessWidget {
     }
 
     // heightSize
-    final headerAreaHeight = maxHeight * (8 / 100);
-    final titleAreaHeight = maxHeight * (20 / 100);
-    final userNameAreaHeight = maxHeight * (5 / 100);
-    final buttonAreaHeight = maxHeight * (8 / 100);
-    final spaceAreaHeight = maxHeight * (15 / 100);
-    final comAreaHeight = maxHeight * (14 / 100);
+    final headerHeight = maxHeight * (8 / 100);
+    final titleHeight = maxHeight * (20 / 100);
+    final userNameHeight = maxHeight * (5 / 100);
+    final buttonHeight = maxHeight * (8 / 100);
+    final spaceHeight = maxHeight * (15 / 100);
+    final comHeight = maxHeight * (14 / 100);
+
+    // widthSize
+    final titleWidth = size.width / 2;
+    final userNameWidth = size.width / 1.7;
+    final buttonWidth = size.width / 1.1;
+    final footerWidth = size.width / 1.05;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: Header(
-        height: headerAreaHeight,
-        width: size.width,
+        height: headerHeight,
       ),
       body: Column(children: [
         AppTitle(
-          width: size.width / 2,
-          height: titleAreaHeight,
+          width: titleWidth,
+          height: titleHeight,
           title: ["Renda", "Machine"],
         ),
         UserName(
-            width: size.width / 1.7,
-            height: userNameAreaHeight,
+            width: userNameWidth,
+            height: userNameHeight,
             name: "user",
             onTap: () => {}),
         Padding(padding: EdgeInsets.all(5)),
-        SelectButtons(height: buttonAreaHeight, width: size.width / 1.1),
+        SelectButtons(width: buttonWidth, height: buttonHeight),
         Padding(padding: EdgeInsets.all(5)),
         Container(
-            height: buttonAreaHeight,
-            width: size.width / 1.1,
+            width: buttonWidth,
+            height: buttonHeight,
             child: Button(text: "PLAY!", onTap: () => {})),
         Container(
-          height: spaceAreaHeight,
+          height: spaceHeight,
         ),
         Container(
-            // height: footerAreaHeight,
-            width: size.width / 1.05,
+            width: footerWidth,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -79,7 +83,7 @@ class Top extends StatelessWidget {
               ],
             )),
         Container(
-          height: comAreaHeight,
+          height: comHeight,
         )
       ]),
     );

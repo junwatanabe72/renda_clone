@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import "../../atoms/score.dart";
+import 'package:renda_clone/components/organisims/top/score.dart';
 import "../../../util/var/index.dart";
 
 // StatelessWidgetを継承

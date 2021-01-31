@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import "../../util/var/index.dart";
+import 'package:renda_clone/util/var/index.dart';
 
 class Score extends StatelessWidget {
   final int score;
