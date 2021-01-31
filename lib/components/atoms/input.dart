@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:renda_clone/stores/user.dart';
 import 'package:renda_clone/util/hook/lengthLimit.dart';
 
 class Input extends StatefulWidget {
-  Input({Key key}) : super(key: key);
+  final String userName;
+  Input({this.userName, Key key}) : super(key: key);
 
   @override
   _InputState createState() => _InputState();
@@ -10,6 +13,13 @@ class Input extends StatefulWidget {
 
 class _InputState extends State<Input> {
   final _formKey = GlobalKey<FormState>();
+
+  String _name;
+  void _updateName(String name) {
+    setState(() {
+      _name = name;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +31,7 @@ class _InputState extends State<Input> {
               Expanded(
                   child: TextFormField(
                 autofocus: true,
+                initialValue: widget.userName,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
                 decoration: InputDecoration(
@@ -39,16 +50,25 @@ class _InputState extends State<Input> {
                 inputFormatters: [
                   LengthLimitingTextFieldFormatterFixed(5),
                 ],
+                onSaved: (value) {
+                  _updateName(value);
+                },
               )),
               ElevatedButton(
-                onPressed: () {
-                  // Validate will return true if the form is valid, or false if
-                  // the form is invalid.
+                onPressed: () => {
+                  _formKey.currentState.save(),
+                  Provider.of<UserStore>(context, listen: false)
+                      .createUser(_name),
+                  FocusScope.of(context).unfocus()
                 },
                 child: Text('done'),
               ),
               ElevatedButton(
                 onPressed: () {
+                  print(widget.userName);
+                  _formKey.currentState.reset();
+                  FocusScope.of(context).unfocus();
+
                   // Validate will return true if the form is valid, or false if
                   // the form is invalid.
                 },

@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'dart:io';
 import 'dart:ui';
 import 'package:renda_clone/components/atoms/button.dart';
+// import 'package:renda_clone/components/atoms/input.dart';
 import 'package:renda_clone/components/organisims/top/board.dart';
 import 'package:renda_clone/components/organisims/top/roll.dart';
 import 'package:renda_clone/components/organisims/top/selectButtons.dart';
 import 'package:renda_clone/components/organisims/top/title.dart';
 import 'package:renda_clone/components/organisims/top/userName.dart';
+import 'package:renda_clone/stores/user.dart';
 import "../components/templetes/header/top.dart";
 
 class Top extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final _user = Provider.of<UserStore>(context);
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     var maxHeight = size.height - padding.top - padding.bottom;
@@ -51,7 +55,7 @@ class Top extends StatelessWidget {
         UserName(
           width: userNameWidth,
           height: userNameHeight,
-          name: "user",
+          name: _user.user != null ? _user.user.name : "Enter Nickname...",
         ),
         Padding(padding: EdgeInsets.all(5)),
         SelectButtons(width: buttonWidth, height: buttonHeight),
