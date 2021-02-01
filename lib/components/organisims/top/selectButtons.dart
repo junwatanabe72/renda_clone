@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:renda_clone/components/atoms/button.dart';
+import 'package:renda_clone/components/atoms/Button.dart';
 import 'package:renda_clone/stores/mode.dart';
 import 'package:renda_clone/util/var/index.dart';
 

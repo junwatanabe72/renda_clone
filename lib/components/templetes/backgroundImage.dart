@@ -4,15 +4,10 @@ import 'package:flutter/material.dart';
 class BackgroundImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return   Image.asset('images/lake.jpg',
       height: double.infinity,
       width: double.infinity,
-      // decoration: BoxDecoration(
-      //   image: DecorationImage(
-      //     image: const AssetImage('images/lake.jpg'),
-      //     fit: BoxFit.cover,
-      //   ),
-      // ),
+      fit: BoxFit.cover
     );
   }
 }
