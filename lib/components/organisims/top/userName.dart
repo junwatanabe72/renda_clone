@@ -15,7 +15,7 @@ class UserName extends StatelessWidget {
     _showDialog() async {
       await showDialog<String>(
         context: context,
-        // barrierColor: Colors.transparent,
+        barrierColor: Colors.transparent,
         child: new AlertDialog(
           contentPadding: EdgeInsets.all(20),
           content: Input(

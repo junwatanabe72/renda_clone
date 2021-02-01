@@ -56,7 +56,7 @@ class _InputState extends State<Input> {
                   _updateName(value);
                 },
               )),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () => {
                   _formKey.currentState.save(),
                   Provider.of<UserStore>(context, listen: false)
@@ -66,7 +66,7 @@ class _InputState extends State<Input> {
                 },
                 child: Text('done'),
               ),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () {
                   _formKey.currentState.reset();
                   FocusScope.of(context).unfocus();
