@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'dart:io';
-import 'dart:ui';
-import 'package:renda_clone/components/atoms/button.dart';
-// import 'package:renda_clone/components/atoms/input.dart';
-import 'package:renda_clone/components/organisims/top/board.dart';
-import 'package:renda_clone/components/organisims/top/roll.dart';
-import 'package:renda_clone/components/organisims/top/selectButtons.dart';
+import 'package:provider/provider.dart';
+import 'package:renda_clone/components/atoms/space.dart';
 import 'package:renda_clone/components/organisims/top/title.dart';
+import 'package:renda_clone/components/organisims/top/topPageButton.dart';
 import 'package:renda_clone/components/organisims/top/userName.dart';
-import 'package:renda_clone/stores/mode.dart';
+import 'package:renda_clone/components/templetes/backgroundImage.dart';
+import 'package:renda_clone/components/templetes/footer/top.dart';
+import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/user.dart';
 import "../components/templetes/header/top.dart";
 
@@ -17,7 +15,7 @@ class Top extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _user = Provider.of<UserStore>(context);
-    final _mode = Provider.of<ModeStore>(context);
+    final _game = Provider.of<GameStore>(context);
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     var maxHeight = size.height - padding.top - padding.bottom;
@@ -35,8 +33,8 @@ class Top extends StatelessWidget {
     final userNameHeight = maxHeight * (5 / 100);
     final buttonHeight = maxHeight * (8 / 100);
     final spaceHeight = maxHeight * (15 / 100);
-    final comHeight = maxHeight * (14 / 100);
-
+    final comHeight = maxHeight * (10 / 100);
+    final betweenNameAndButtonsHeight = maxHeight * (2 / 100);
     // widthSize
     final titleWidth = size.width / 2;
     final userNameWidth = size.width / 1.7;
@@ -44,55 +42,39 @@ class Top extends StatelessWidget {
     final footerWidth = size.width / 1.05;
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      appBar: Header(
-        height: headerHeight,
-      ),
-      body: Column(children: [
-        AppTitle(
-          width: titleWidth,
-          height: titleHeight,
-          title: ["Renda", "Machine"],
-        ),
-        UserName(
-          width: userNameWidth,
-          height: userNameHeight,
-          name: _user.user != null ? _user.user.name : "Enter Nickname...",
-        ),
-        Padding(padding: EdgeInsets.all(5)),
-        SelectButtons(
-            mode: _mode.mode, width: buttonWidth, height: buttonHeight),
-        Padding(padding: EdgeInsets.all(5)),
-        Container(
-            width: buttonWidth,
-            height: buttonHeight,
-            child: Button(text: "PLAY!", selected: false, onTap: () => {})),
-        Container(
-          height: spaceHeight,
-        ),
-        Container(
-            width: footerWidth,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Roll(),
-                Container(
-                    width: size.width / 2,
-                    child: Column(children: [
-                      Board(),
-                      Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text("2021.1.1",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.normal, fontSize: 10)))
-                    ]))
-              ],
-            )),
-        Container(
-          height: comHeight,
-        )
-      ]),
-    );
+        resizeToAvoidBottomInset: false,
+        body: BackgroundImage(
+          bodyWidget: Column(children: [
+            Header(
+              height: headerHeight,
+            ),
+            AppTitle(
+              width: titleWidth,
+              height: titleHeight,
+              title: ["Renda", "Machine"],
+            ),
+            UserName(
+              width: userNameWidth,
+              height: userNameHeight,
+              name: _user.user != null ? _user.user.name : "",
+            ),
+            Space(
+              height: betweenNameAndButtonsHeight,
+            ),
+            _user.user != null
+                ? TopPageButtons(
+                    mode: _game.game.mode,
+                    width: buttonWidth,
+                    height: buttonHeight)
+                : Space(height: spaceHeight),
+            Space(
+              height: spaceHeight,
+            ),
+            Footer(width: footerWidth),
+            Space(
+              height: comHeight,
+            )
+          ]),
+        ));
   }
 }

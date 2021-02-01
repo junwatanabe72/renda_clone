@@ -5,7 +5,8 @@ import 'package:renda_clone/util/hook/lengthLimit.dart';
 
 class Input extends StatefulWidget {
   final String userName;
-  Input({this.userName, Key key}) : super(key: key);
+  final Function closeDialog;
+  Input({this.userName, this.closeDialog, Key key}) : super(key: key);
 
   @override
   _InputState createState() => _InputState();
@@ -36,6 +37,7 @@ class _InputState extends State<Input> {
                 style: TextStyle(fontSize: 20.0, color: Colors.black),
                 decoration: InputDecoration(
                   filled: true,
+                  isDense: true,
                   fillColor: Colors.white,
                   border: InputBorder.none,
                   errorBorder: InputBorder.none,
@@ -59,16 +61,16 @@ class _InputState extends State<Input> {
                   _formKey.currentState.save(),
                   Provider.of<UserStore>(context, listen: false)
                       .createUser(_name),
-                  FocusScope.of(context).unfocus()
+                  FocusScope.of(context).unfocus(),
+                  widget.closeDialog()
                 },
                 child: Text('done'),
               ),
               ElevatedButton(
                 onPressed: () {
-                  print(widget.userName);
                   _formKey.currentState.reset();
                   FocusScope.of(context).unfocus();
-
+                  widget.closeDialog();
                   // Validate will return true if the form is valid, or false if
                   // the form is invalid.
                 },
