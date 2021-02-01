@@ -20,7 +20,7 @@ class SelectButtons extends StatelessWidget {
           children: gameModes.values
               .map((value) => Button(
                   text: value,
-                  mode: mode,
+                  selected: value == mode,
                   onTap: () => {
                         Provider.of<ModeStore>(context, listen: false)
                             .changeMode(value),

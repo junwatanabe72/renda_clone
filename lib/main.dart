@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:renda_clone/stores/mode.dart';
 import 'package:renda_clone/stores/user.dart';
 import "components/templetes/backgroundImage.dart";
-// import 'pages/index.dart';
-import 'pages/test.dart';
+import 'pages/index.dart';
+// import 'pages/test.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         home: Stack(
           children: <Widget>[
             BackgroundImage(),
-            Test(),
+            Top(),
           ],
         ));
   }

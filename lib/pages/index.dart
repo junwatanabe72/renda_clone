@@ -9,6 +9,7 @@ import 'package:renda_clone/components/organisims/top/roll.dart';
 import 'package:renda_clone/components/organisims/top/selectButtons.dart';
 import 'package:renda_clone/components/organisims/top/title.dart';
 import 'package:renda_clone/components/organisims/top/userName.dart';
+import 'package:renda_clone/stores/mode.dart';
 import 'package:renda_clone/stores/user.dart';
 import "../components/templetes/header/top.dart";
 
@@ -16,6 +17,7 @@ class Top extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _user = Provider.of<UserStore>(context);
+    final _mode = Provider.of<ModeStore>(context);
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     var maxHeight = size.height - padding.top - padding.bottom;
@@ -58,12 +60,13 @@ class Top extends StatelessWidget {
           name: _user.user != null ? _user.user.name : "Enter Nickname...",
         ),
         Padding(padding: EdgeInsets.all(5)),
-        SelectButtons(width: buttonWidth, height: buttonHeight),
+        SelectButtons(
+            mode: _mode.mode, width: buttonWidth, height: buttonHeight),
         Padding(padding: EdgeInsets.all(5)),
         Container(
             width: buttonWidth,
             height: buttonHeight,
-            child: Button(text: "PLAY!", onTap: () => {})),
+            child: Button(text: "PLAY!", selected: false, onTap: () => {})),
         Container(
           height: spaceHeight,
         ),
