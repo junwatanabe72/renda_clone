@@ -6,7 +6,7 @@ import 'package:renda_clone/util/hook/lengthLimit.dart';
 class Input extends StatefulWidget {
   final String userName;
   final Function closeDialog;
-  Input({this.userName,this.closeDialog, Key key}) : super(key: key);
+  Input({this.userName, this.closeDialog, Key key}) : super(key: key);
 
   @override
   _InputState createState() => _InputState();
@@ -34,7 +34,7 @@ class _InputState extends State<Input> {
                 autofocus: true,
                 initialValue: widget.userName,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize:  20.0, color: Colors.black),
+                style: TextStyle(fontSize: 20.0, color: Colors.black),
                 decoration: InputDecoration(
                   filled: true,
                   isDense: true,
@@ -62,18 +62,15 @@ class _InputState extends State<Input> {
                   Provider.of<UserStore>(context, listen: false)
                       .createUser(_name),
                   FocusScope.of(context).unfocus(),
-                   widget.closeDialog()
-                  
-
+                  widget.closeDialog()
                 },
                 child: Text('done'),
               ),
               RaisedButton(
                 onPressed: () {
-                  print(widget.userName);
                   _formKey.currentState.reset();
                   FocusScope.of(context).unfocus();
- widget.closeDialog();
+                  widget.closeDialog();
                   // Validate will return true if the form is valid, or false if
                   // the form is invalid.
                 },
