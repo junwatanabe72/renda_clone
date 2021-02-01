@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 import 'dart:ui';
-import 'package:renda_clone/components/atoms/button.dart';
+import 'package:renda_clone/components/atoms/statefullButton.dart';
 // import 'package:renda_clone/components/atoms/input.dart';
 import 'package:renda_clone/components/organisims/top/board.dart';
 import 'package:renda_clone/components/organisims/top/roll.dart';
@@ -35,7 +35,7 @@ class Top extends StatelessWidget {
     final userNameHeight = maxHeight * (5 / 100);
     final buttonHeight = maxHeight * (8 / 100);
     final spaceHeight = maxHeight * (15 / 100);
-    final comHeight = maxHeight * (14 / 100);
+    final comHeight = maxHeight * (10 / 100);
 
     // widthSize
     final titleWidth = size.width / 2;
@@ -44,11 +44,18 @@ class Top extends StatelessWidget {
     final footerWidth = size.width / 1.05;
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
-      appBar: Header(
+       resizeToAvoidBottomInset: false,
+      body: 
+      Container(decoration: new BoxDecoration(
+            image: new DecorationImage(
+              image: new AssetImage("images/lake.jpg"),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child:Column(children: [
+        Header(
         height: headerHeight,
       ),
-      body: Column(children: [
         AppTitle(
           width: titleWidth,
           height: titleHeight,
@@ -59,14 +66,14 @@ class Top extends StatelessWidget {
           height: userNameHeight,
           name: _user.user != null ? _user.user.name : "Enter Nickname...",
         ),
-        Padding(padding: EdgeInsets.all(5)),
+        const Padding(padding: EdgeInsets.all(5)),
         SelectButtons(
             mode: _mode.mode, width: buttonWidth, height: buttonHeight),
         Padding(padding: EdgeInsets.all(5)),
         Container(
             width: buttonWidth,
             height: buttonHeight,
-            child: Button(text: "PLAY!", selected: false, onTap: () => {})),
+            child: StatefullButton(text: "PLAY!", onTap: () => {})),
         Container(
           height: spaceHeight,
         ),
@@ -93,6 +100,6 @@ class Top extends StatelessWidget {
           height: comHeight,
         )
       ]),
-    );
+    ));
   }
 }

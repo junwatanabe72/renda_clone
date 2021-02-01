@@ -9,12 +9,13 @@ class UserName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     _showDialog() async {
       await showDialog<String>(
         context: context,
-        barrierColor: Colors.black.withOpacity(0),
+        // barrierColor: Colors.black.withOpacity(0),
         child: new AlertDialog(
-          content: Input(),
+          content: Input(closeDialog: () => Navigator.pop(context),),
         ),
       );
     }
@@ -25,7 +26,7 @@ class UserName extends StatelessWidget {
         child: GestureDetector(
           onTap: _showDialog,
           child: Container(
-              padding: EdgeInsets.all(10),
+              padding: EdgeInsets.all(5),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(5),
