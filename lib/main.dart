@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/user.dart';
+// import 'pages/game.dart';
 import 'pages/index.dart';
 import 'package:provider/provider.dart';
 
