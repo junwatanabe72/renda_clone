@@ -9,11 +9,12 @@ class GameStore extends ChangeNotifier {
   // 外側から直接変更されないように、getterのみ公開
   Game get game => _game;
 
-  changeGameMode(String value) {
-    if (game.mode == value) {
+  changeGameMode(String key) {
+    if (game.mode == gameModes[key]) {
       return;
     }
-    game.mode = value;
+    game.mode = gameModes[key];
+    game.time = gameTimes[key];
     notifyListeners();
   }
 

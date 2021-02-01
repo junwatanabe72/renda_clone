@@ -7,7 +7,7 @@ import 'package:renda_clone/components/organisims/top/topPageButton.dart';
 import 'package:renda_clone/components/organisims/top/userName.dart';
 import 'package:renda_clone/components/templetes/backgroundImage.dart';
 import 'package:renda_clone/components/templetes/footer/top.dart';
-import 'package:renda_clone/stores/mode.dart';
+import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/user.dart';
 import "../components/templetes/header/top.dart";
 
@@ -15,7 +15,7 @@ class Top extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _user = Provider.of<UserStore>(context);
-    final _mode = Provider.of<ModeStore>(context);
+    final _game = Provider.of<GameStore>(context);
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     var maxHeight = size.height - padding.top - padding.bottom;
@@ -63,7 +63,9 @@ class Top extends StatelessWidget {
             ),
             _user.user != null
                 ? TopPageButtons(
-                    mode: _mode.mode, width: buttonWidth, height: buttonHeight)
+                    mode: _game.game.mode,
+                    width: buttonWidth,
+                    height: buttonHeight)
                 : Space(height: spaceHeight),
             Space(
               height: spaceHeight,
