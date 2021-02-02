@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:provider/provider.dart';
 import 'package:renda_clone/components/atoms/space.dart';
+import 'package:renda_clone/components/organisims/game/gameText.dart';
 import 'package:renda_clone/components/organisims/game/counterButtons.dart';
 import 'package:renda_clone/components/templetes/backgroundImage.dart';
 import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/timer.dart';
 // import 'package:renda_clone/stores/user.dart';
-import "../components/templetes/header/top.dart";
+import "../components/templetes/header/game.dart";
 
 class Game extends StatelessWidget {
   @override
@@ -18,7 +19,8 @@ class Game extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     var maxHeight = size.height - padding.top - padding.bottom;
-
+    final _isOver = _timer.timeCount != _game.game.time;
+    final _inPlay = _game.game.inPlay;
     // アプリ描画エリアの縦サイズを取得
     if (Platform.isAndroid) {
       maxHeight = size.height - padding.top - kToolbarHeight;
@@ -28,7 +30,7 @@ class Game extends StatelessWidget {
 
     // heightSize
     final headerHeight = maxHeight * (10 / 100);
-    // final textHeight = maxHeight * (20 / 100);
+    final textHeight = maxHeight * (12 / 100);
     final buttonsHeight = maxHeight * (75 / 100);
     final comHeight = maxHeight * (10 / 100);
 
@@ -40,17 +42,22 @@ class Game extends StatelessWidget {
           bodyWidget: Column(children: [
             Header(
               height: headerHeight,
+              width: gameWidth,
             ),
-            Text(_timer.timeCount.toString()),
-            Text(
-              _game.game.count.toString(),
-              style: TextStyle(fontSize: 20.0, color: Colors.cyan),
-            ),
-            _timer.timeCount != _game.game.time
+            Container(
+                height: textHeight,
+                alignment: Alignment.center,
+                child: GameText(inPlay: _inPlay, isOver: _isOver)),
+            _isOver
                 ? CounterButtons(width: gameWidth, height: buttonsHeight)
-                : Space(
-                    height: comHeight,
-                  ),
+                : const Padding(
+                    padding: EdgeInsets.all(20),
+                    child: Text("Time`s Up!",
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 40,
+                          height: 1.0,
+                        ))),
             Space(
               height: comHeight,
             )

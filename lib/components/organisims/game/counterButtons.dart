@@ -21,7 +21,6 @@ class CounterButtons extends StatelessWidget {
             };
 
     return Container(
-      // color: Colors.red,
       height: this.height,
       width: this.width,
       child: Wrap(

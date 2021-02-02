@@ -34,10 +34,13 @@ class GameStore extends ChangeNotifier {
       };
 
   gameStart(TimerStore timer) async {
-    _game.inPlay = !_game.inPlay;
+    inPlayToggle();
     await timer.startTimer(_game.time);
-    _game.inPlay = !_game.inPlay;
-    // user.10s=count;
+  }
+
+  gameEnd() {
     _game.count = 0;
+    // inPlayToggle();
+    // user.10s=count;
   }
 }
