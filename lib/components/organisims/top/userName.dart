@@ -23,8 +23,7 @@ class UserName extends StatelessWidget {
           content: Input(
             userName: this.name,
             onChange: (String value) =>
-                Provider.of<UserStore>(context, listen: false)
-                    .createUser(value),
+                context.read<UserStore>().createUser(value),
             closeDialog: () => Navigator.pop(context),
           ),
         ),

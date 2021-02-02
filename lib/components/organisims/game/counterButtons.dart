@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:renda_clone/components/atoms/Button.dart';
 import 'package:renda_clone/stores/game.dart';
+import 'package:renda_clone/stores/timer.dart';
 // import 'package:renda_clone/util/var/index.dart';
 
 class CounterButtons extends StatelessWidget {
@@ -11,17 +12,13 @@ class CounterButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isPlay =
-        Provider.of<GameStore>(context, listen: false).game.inPlay;
-
-    // final onTap = isPlay
-    //     ? () =>
-    //         {Provider.of<GameStore>(context, listen: false).incrementCount()}
-    //     : () => {
-    //           Provider.of<GameStore>(context, listen: false).gameStart(),
-    //         };
-    final onTap =
-        () => Provider.of<GameStore>(context, listen: false).incrementCount();
+    final bool _isPlay = context.read<GameStore>().game.inPlay;
+    final TimerStore _timer = context.read<TimerStore>();
+    final onTap = _isPlay
+        ? () => context.read<GameStore>().incrementCount()
+        : () => {
+              context.read<GameStore>().gameStart(_timer),
+            };
 
     return Container(
       // color: Colors.red,
@@ -37,7 +34,7 @@ class CounterButtons extends StatelessWidget {
                   text: "",
                   selected: true,
                   onTap: onTap,
-                  // height: this.height / 4.3,
+                  height: this.height / 4.3,
                   width: this.width / 4.3,
                 ),
               )
