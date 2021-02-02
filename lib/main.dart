@@ -2,9 +2,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:renda_clone/stores/game.dart';
+import 'package:renda_clone/stores/timer.dart';
 import 'package:renda_clone/stores/user.dart';
-// import 'pages/game.dart';
-import 'pages/index.dart';
+import 'pages/game.dart';
+// import 'pages/index.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,6 +21,9 @@ void main() {
         ),
         ChangeNotifierProvider<GameStore>(
           create: (context) => GameStore(),
+        ),
+        ChangeNotifierProvider<TimerStore>(
+          create: (context) => TimerStore(),
         )
       ], child: MyApp()));
 }
@@ -40,7 +44,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Top(),
+      home: Game(),
     );
   }
 }

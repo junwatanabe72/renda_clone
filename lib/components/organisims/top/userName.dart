@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:renda_clone/components/atoms/input.dart';
+import 'package:renda_clone/stores/user.dart';
 
 class UserName extends StatelessWidget {
   final String name;
@@ -20,6 +22,8 @@ class UserName extends StatelessWidget {
           contentPadding: EdgeInsets.all(20),
           content: Input(
             userName: this.name,
+            onChange: (String value) =>
+                context.read<UserStore>().createUser(value),
             closeDialog: () => Navigator.pop(context),
           ),
         ),

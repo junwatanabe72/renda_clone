@@ -22,8 +22,7 @@ class SelectButtons extends StatelessWidget {
                   text: gameModes[key],
                   selected: gameModes[key] == mode,
                   onTap: () => {
-                        Provider.of<GameStore>(context, listen: false)
-                            .changeGameMode(key),
+                        context.read<GameStore>().changeGameMode(key),
                       },
                   width: this.width / 3.2))
               .toList()),
