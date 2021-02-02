@@ -4,10 +4,7 @@ class StatefullButton extends StatefulWidget {
   final String text;
   final double width;
   final Function onTap;
-  StatefullButton(
-      {@required this.text,
-      @required this.onTap,
-      this.width});
+  StatefullButton({this.text = "", @required this.onTap, this.width});
 
   @override
   _StatefullButtonState createState() => _StatefullButtonState();

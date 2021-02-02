@@ -7,7 +7,7 @@ class Button extends StatelessWidget {
   final double height;
   final Function onTap;
   Button(
-      {@required this.text,
+      {this.text = "",
       @required this.onTap,
       @required this.selected,
       this.width,

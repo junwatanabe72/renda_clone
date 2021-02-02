@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:renda_clone/stores/user.dart';
 import 'package:renda_clone/util/hook/lengthLimit.dart';
+
+const hintText = 'Enter Nickname...';
+const submitText = "done";
+const cancelText = "cancel";
 
 class Input extends StatefulWidget {
   final String userName;
   final Function closeDialog;
-  Input({this.userName, this.closeDialog, Key key}) : super(key: key);
+  final Function onChange;
+  Input({this.userName, this.onChange, this.closeDialog, Key key})
+      : super(key: key);
 
   @override
   _InputState createState() => _InputState();
@@ -43,7 +47,7 @@ class _InputState extends State<Input> {
                   errorBorder: InputBorder.none,
                   disabledBorder: InputBorder.none,
                   hintStyle: TextStyle(fontSize: 20.0, color: Colors.grey),
-                  hintText: 'Enter Nickname...',
+                  hintText: hintText,
                   enabledBorder: UnderlineInputBorder(
                     borderSide: new BorderSide(color: Colors.white),
                     borderRadius: new BorderRadius.circular(25.7),
@@ -59,12 +63,11 @@ class _InputState extends State<Input> {
               ElevatedButton(
                 onPressed: () => {
                   _formKey.currentState.save(),
-                  Provider.of<UserStore>(context, listen: false)
-                      .createUser(_name),
+                  widget.onChange(_name),
                   FocusScope.of(context).unfocus(),
                   widget.closeDialog()
                 },
-                child: Text('done'),
+                child: const Text(submitText),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -74,7 +77,7 @@ class _InputState extends State<Input> {
                   // Validate will return true if the form is valid, or false if
                   // the form is invalid.
                 },
-                child: Text('cancel'),
+                child: const Text(cancelText),
               ),
             ]));
   }

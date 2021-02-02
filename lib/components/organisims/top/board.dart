@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
+const title = "Leaderboard";
+
 class Board extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       width: MediaQuery.of(context).size.width / 2,
       decoration: BoxDecoration(
           color: Colors.red.withOpacity(0.05),
@@ -14,7 +16,7 @@ class Board extends StatelessWidget {
             width: 2.0,
           )),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text("Leaderboard",
+        const Text(title,
             style: TextStyle(
               fontWeight: FontWeight.normal,
               fontSize: 20,

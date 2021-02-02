@@ -14,12 +14,14 @@ class CounterButtons extends StatelessWidget {
     final bool isPlay =
         Provider.of<GameStore>(context, listen: false).game.inPlay;
 
-    final onTap = isPlay
-        ? () =>
-            {Provider.of<GameStore>(context, listen: false).incrementCount()}
-        : () => {
-              Provider.of<GameStore>(context, listen: false).gameStart(),
-            };
+    // final onTap = isPlay
+    //     ? () =>
+    //         {Provider.of<GameStore>(context, listen: false).incrementCount()}
+    //     : () => {
+    //           Provider.of<GameStore>(context, listen: false).gameStart(),
+    //         };
+    final onTap =
+        () => Provider.of<GameStore>(context, listen: false).incrementCount();
 
     return Container(
       // color: Colors.red,
