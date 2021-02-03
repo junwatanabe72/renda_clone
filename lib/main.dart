@@ -44,8 +44,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // home: Top(),
-      initialRoute: Game.routeName,
+      initialRoute: Top.routeName,
       routes: <String, WidgetBuilder>{
         Top.routeName: (BuildContext context) => Top(),
         Game.routeName: (BuildContext context) => Game(),

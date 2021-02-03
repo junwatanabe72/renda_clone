@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:renda_clone/components/atoms/Button.dart';
 import 'package:renda_clone/stores/game.dart';
-// import 'package:renda_clone/stores/timer.dart';
+import 'package:renda_clone/stores/timer.dart';
 // import 'package:renda_clone/util/var/index.dart';
 
 class CounterButtons extends StatelessWidget {
@@ -18,13 +18,13 @@ class CounterButtons extends StatelessWidget {
     // final _time = context.read<GameStore>().game.time;
     // final _increment = context.read<GameStore>().incrementCount();
     // final bool _inPlay = context.watch<GameStore>().game.inPlay;
-    // final _timer = context.read<TimerStore>();
+    final _timer = context.read<TimerStore>();
     // final onTap = context.read<GameStore>().game.inPlay
     //     ? () => context.read<GameStore>().incrementCount()
     //     : () => {
     //           context.read<GameStore>().startTimer(),
     //         };
-    final onTap = () => context.read<GameStore>().incrementCount();
+    final onTap = () => context.read<GameStore>().incrementCount(_timer);
 
     return Container(
       height: this.height,
