@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:renda_clone/components/atoms/Button.dart';
-import 'package:renda_clone/stores/mode.dart';
+import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/util/var/index.dart';
 
 class SelectButtons extends StatelessWidget {
@@ -17,13 +17,12 @@ class SelectButtons extends StatelessWidget {
       width: this.width,
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: gameModes.values
-              .map((value) => Button(
-                  text: value,
-                  selected: value == mode,
+          children: gameModes.keys
+              .map((key) => Button(
+                  text: gameModes[key],
+                  selected: gameModes[key] == mode,
                   onTap: () => {
-                        Provider.of<ModeStore>(context, listen: false)
-                            .changeMode(value),
+                        context.read<GameStore>().changeGameMode(key),
                       },
                   width: this.width / 3.2))
               .toList()),

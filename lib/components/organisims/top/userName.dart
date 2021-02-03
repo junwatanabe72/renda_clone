@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:renda_clone/components/atoms/input.dart';
+import 'package:renda_clone/stores/user.dart';
 
 class UserName extends StatelessWidget {
   final String name;
@@ -9,13 +11,21 @@ class UserName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+    final Widget textWidget = this.name != ""
+        ? Text(this.name, style: TextStyle(color: Colors.black))
+        : Text('Enter Nickname...', style: TextStyle(color: Colors.grey));
     _showDialog() async {
       await showDialog<String>(
         context: context,
-        // barrierColor: Colors.black.withOpacity(0),
+        barrierColor: Colors.transparent,
         child: new AlertDialog(
-          content: Input(closeDialog: () => Navigator.pop(context),),
+          contentPadding: EdgeInsets.all(20),
+          content: Input(
+            userName: this.name,
+            onChange: (String value) =>
+                context.read<UserStore>().createUser(value),
+            closeDialog: () => Navigator.pop(context),
+          ),
         ),
       );
     }
@@ -24,16 +34,13 @@ class UserName extends StatelessWidget {
         height: this.height,
         width: this.width,
         child: GestureDetector(
-          onTap: _showDialog,
-          child: Container(
-              padding: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Center(
-                  child:
-                      Text(this.name, style: TextStyle(color: Colors.black)))),
-        ));
+            onTap: _showDialog,
+            child: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Center(child: textWidget))));
   }
 }
