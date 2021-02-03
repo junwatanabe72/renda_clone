@@ -49,7 +49,8 @@ class Header extends StatelessWidget with PreferredSizeWidget {
                     text: "QUIT",
                     onTap: () => {
                       context.read<GameStore>().gameEnd(),
-                      context.read<TimerStore>().resetCount()
+                      context.read<TimerStore>().resetCount(),
+                      Navigator.pop(context)
                     },
                   )),
             ]));

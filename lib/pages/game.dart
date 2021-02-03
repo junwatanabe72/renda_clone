@@ -11,6 +11,7 @@ import 'package:renda_clone/stores/timer.dart';
 import "../components/templetes/header/game.dart";
 
 class Game extends StatelessWidget {
+  static const routeName = "/game";
   @override
   Widget build(BuildContext context) {
     // final _user = Provider.of<UserStore>(context);
