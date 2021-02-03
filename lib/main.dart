@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       // home: Top(),
-      initialRoute: Top.routeName,
+      initialRoute: Game.routeName,
       routes: <String, WidgetBuilder>{
         Top.routeName: (BuildContext context) => Top(),
         Game.routeName: (BuildContext context) => Game(),

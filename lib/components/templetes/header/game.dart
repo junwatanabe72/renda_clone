@@ -33,7 +33,7 @@ class Header extends StatelessWidget with PreferredSizeWidget {
             children: [
               Container(
                   width: width / 2.1,
-                  child: Selector<TimerStore, String>(
+                  child: Selector<GameStore, String>(
                     selector: (context, timer) => getCountText(timer),
                     builder: (context, count, child) => Container(
                         alignment: Alignment.center,
@@ -43,13 +43,23 @@ class Header extends StatelessWidget with PreferredSizeWidget {
                               fontSize: 40,
                             ))), // a
                   )),
+              // child: Selector<TimerStore, String>(
+              //   selector: (context, timer) => getCountText(timer),
+              //   builder: (context, count, child) => Container(
+              //       alignment: Alignment.center,
+              //       child: Text(count.toString(),
+              //           style: TextStyle(
+              //             fontWeight: FontWeight.normal,
+              //             fontSize: 40,
+              //           ))), // a
+              // )),
               Container(
                   width: width / 2.1,
                   child: StatefullButton(
                     text: "QUIT",
                     onTap: () => {
-                      context.read<GameStore>().gameEnd(),
-                      context.read<TimerStore>().resetCount(),
+                      // context.read<GameStore>().gameEnd(),
+                      // context.read<TimerStore>().resetCount(),
                       Navigator.pop(context)
                     },
                   )),
