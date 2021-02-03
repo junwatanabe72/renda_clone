@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:renda_clone/components/atoms/statefullButton.dart';
 import 'package:renda_clone/stores/timer.dart';
 import 'package:renda_clone/stores/game.dart';
+import 'package:renda_clone/stores/user.dart';
 
 // StatelessWidgetを継承
 class Header extends StatelessWidget with PreferredSizeWidget {
@@ -24,6 +25,7 @@ class Header extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _game = Provider.of<GameStore>(context);
     return Container(
         width: this.width,
         height: this.height,
@@ -47,6 +49,9 @@ class Header extends StatelessWidget with PreferredSizeWidget {
               child: StatefullButton(
                 text: "QUIT",
                 onTap: () => {
+                  context
+                      .read<UserStore>()
+                      .updateUserScore(_game.game.mode, _game.game.count),
                   context.read<GameStore>().gameEnd(),
                   context.read<TimerStore>().resetCount(),
                   Navigator.pop(context)

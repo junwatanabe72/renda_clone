@@ -7,14 +7,14 @@ import 'package:renda_clone/components/organisims/game/counterButtons.dart';
 import 'package:renda_clone/components/templetes/backgroundImage.dart';
 import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/timer.dart';
-// import 'package:renda_clone/stores/user.dart';
+import 'package:renda_clone/stores/user.dart';
 import "../components/templetes/header/game.dart";
 
 class Game extends StatelessWidget {
   static const routeName = "/game";
   @override
   Widget build(BuildContext context) {
-    // final _user = Provider.of<UserStore>(context);
+    Provider.of<UserStore>(context);
     final _game = Provider.of<GameStore>(context);
     final _timer = Provider.of<TimerStore>(context);
     final size = MediaQuery.of(context).size;
