@@ -12,13 +12,19 @@ class CounterButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool _isPlay = context.read<GameStore>().game.inPlay;
-    final TimerStore _timer = context.read<TimerStore>();
-    final onTap = _isPlay
-        ? () => context.read<GameStore>().incrementCount()
-        : () => {
-              context.read<GameStore>().gameStart(_timer),
-            };
+    // final _game = context.read<GameStore>().game;
+    // final _inPlay = _game.inPlay;
+    // final _toggle = context.read<GameStore>().inPlayToggle();
+    // final _time = context.read<GameStore>().game.time;
+    // final _increment = context.read<GameStore>().incrementCount();
+    // final bool _inPlay = context.watch<GameStore>().game.inPlay;
+    final _timer = context.read<TimerStore>();
+    // final onTap = context.read<GameStore>().game.inPlay
+    //     ? () => context.read<GameStore>().incrementCount()
+    //     : () => {
+    //           context.read<GameStore>().startTimer(),
+    //         };
+    final onTap = () => context.read<GameStore>().incrementCount(_timer);
 
     return Container(
       height: this.height,

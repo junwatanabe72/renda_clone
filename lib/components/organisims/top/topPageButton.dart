@@ -17,7 +17,9 @@ class TopPageButtons extends StatelessWidget {
       Container(
           width: this.width,
           height: this.height,
-          child: StatefullButton(text: "PLAY!", onTap: () => {}))
+          child: StatefullButton(
+              text: "PLAY!",
+              onTap: () => {Navigator.of(context).pushNamed("/game")}))
     ]);
   }
 }

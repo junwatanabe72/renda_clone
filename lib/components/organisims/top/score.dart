@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:renda_clone/util/var/index.dart';
 
 class Score extends StatelessWidget {
-  final int score;
   final String mode;
-  Score({this.score = 0, @required this.mode});
+  final int score;
+  Score({this.score, @required this.mode});
 
   @override
   Widget build(BuildContext context) {
+    final scoreText = this.score == null ? "---" : this.score.toString();
     return Center(
         child: Column(
       children: <Widget>[
-        Text(gameModes[this.mode]),
-        Text(this.score.toString())
+        Text(this.mode,
+            style: TextStyle(
+              fontWeight: FontWeight.normal,
+              fontSize: 20,
+              height: 1.0,
+            )),
+        Text(
+          scoreText,
+          style: TextStyle(
+            fontWeight: FontWeight.normal,
+            fontSize: 20,
+            height: 1.0,
+          ),
+        )
       ],
     ));
   }

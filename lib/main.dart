@@ -5,7 +5,7 @@ import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/timer.dart';
 import 'package:renda_clone/stores/user.dart';
 import 'pages/game.dart';
-// import 'pages/index.dart';
+import 'pages/index.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -44,7 +44,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Game(),
+      initialRoute: Top.routeName,
+      routes: <String, WidgetBuilder>{
+        Top.routeName: (BuildContext context) => Top(),
+        Game.routeName: (BuildContext context) => Game(),
+      },
     );
   }
 }

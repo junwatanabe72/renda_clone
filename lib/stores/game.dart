@@ -4,15 +4,12 @@ import 'package:renda_clone/stores/timer.dart';
 import 'package:renda_clone/util/var/index.dart';
 
 class GameStore extends ChangeNotifier {
-  // 実際に管理される商品のリスト
-  Game _game =
-      Game(mode: gameModes["A"], time: gameTimes["A"], inPlay: false, count: 0);
-  // 外側から直接変更されないように、getterのみ公開
+  Game _game = Game(
+      mode: gameModes[mode.first.toString()],
+      time: gameTimes[mode.first.toString()],
+      inPlay: false,
+      count: 0);
   Game get game => _game;
-
-  Future<Null> delay(int milliseconds) {
-    return new Future.delayed(new Duration(milliseconds: milliseconds * 10));
-  }
 
   changeGameMode(String key) {
     if (game.mode == gameModes[key]) {
@@ -23,24 +20,27 @@ class GameStore extends ChangeNotifier {
     notifyListeners();
   }
 
-  incrementCount() {
+  incrementCount(TimerStore timer) {
+    if (timer.timeCount == 0) {
+      inPlayToggle();
+      timer.startTimer(inPlayToggle(), game.time);
+    }
     _game.count += 1;
     notifyListeners();
   }
 
+  gameEnd() => {
+        _game.count = 0,
+        inPlayToggle(),
+        notifyListeners(),
+      };
   inPlayToggle() => {
         _game.inPlay = !_game.inPlay,
         notifyListeners(),
       };
 
-  gameStart(TimerStore timer) async {
-    inPlayToggle();
-    await timer.startTimer(_game.time);
-  }
-
-  gameEnd() {
-    _game.count = 0;
-    // inPlayToggle();
-    // user.10s=count;
+  @override
+  void dispose() {
+    super.dispose();
   }
 }

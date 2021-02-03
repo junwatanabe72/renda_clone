@@ -7,8 +7,7 @@ const leadTextB = "to start";
 
 class GameText extends StatelessWidget {
   final bool inPlay;
-  final bool isOver;
-  GameText({@required this.inPlay, @required this.isOver});
+  GameText({@required this.inPlay});
 
   @override
   Widget build(BuildContext context) {
