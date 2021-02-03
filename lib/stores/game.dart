@@ -4,8 +4,11 @@ import 'package:renda_clone/stores/timer.dart';
 import 'package:renda_clone/util/var/index.dart';
 
 class GameStore extends ChangeNotifier {
-  Game _game =
-      Game(mode: gameModes["A"], time: gameTimes["A"], inPlay: false, count: 0);
+  Game _game = Game(
+      mode: gameModes[mode.first.toString()],
+      time: gameTimes[mode.first.toString()],
+      inPlay: false,
+      count: 0);
   Game get game => _game;
 
   changeGameMode(String key) {

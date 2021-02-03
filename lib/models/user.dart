@@ -1,13 +1,15 @@
 class User {
-  final String name;
+  String name;
+  int first;
+  int second;
+  int third;
+  User({this.name, this.first, this.second, this.third});
 
-  User({this.name = "test"});
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      name: json['name'] as String,
-      // profile:
-      //     json['profile'] == null ? null : Profile.fromJson(json['profile']),
-    );
-  }
+  // factory User.fromJson(Map<String, dynamic> json) {
+  //   return User(
+  //     name: json['name'] as String,
+  //     // profile:
+  //     //     json['profile'] == null ? null : Profile.fromJson(json['profile']),
+  //   );
+  // }
 }

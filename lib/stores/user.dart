@@ -13,16 +13,16 @@ class UserStore extends ChangeNotifier {
   // Storeに変更を要求するインターフェイス
   createUser(String value) {
     if (value.length == 0) {
-      _user = null;
-      notifyListeners();
+      return _user = null;
+      // notifyListeners();
     }
     if (_users.length != 0) {
       final existUser = _users.where((user) => user.name == value);
       if (existUser.length != 0) {
-        return;
+        return _user = existUser.first;
       }
     }
-    final User newUser = User(name: value);
+    final User newUser = User(name: value, first: 0, second: 0, third: 0);
     _users..add(newUser);
     _user = newUser;
     notifyListeners();

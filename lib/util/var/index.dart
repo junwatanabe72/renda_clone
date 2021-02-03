@@ -1,2 +1,16 @@
-final gameModes = {"A": "10S", "B": "60S", "C": "ENDLESS"};
-final gameTimes = {"A": 500, "B": 600, "C": 900};
+enum mode {
+  first,
+  second,
+  third,
+}
+
+final gameModes = {
+  mode.first.toString(): "10S",
+  mode.second.toString(): "60S",
+  mode.third.toString(): "ENDLESS"
+};
+final gameTimes = {
+  mode.first.toString(): 500,
+  mode.second.toString(): 600,
+  mode.third.toString(): 900
+};
