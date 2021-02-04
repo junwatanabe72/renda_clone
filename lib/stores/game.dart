@@ -32,10 +32,11 @@ class GameStore extends ChangeNotifier {
   }
 
   gameEnd() => {
+        if (_game.inPlay) {inPlayToggle()},
         _game.count = 0,
-        inPlayToggle(),
         notifyListeners(),
       };
+
   inPlayToggle() => {
         _game.inPlay = !_game.inPlay,
         notifyListeners(),

@@ -41,9 +41,9 @@ class Game extends StatelessWidget {
         body: BackgroundImage(
           bodyWidget: Column(children: [
             Header(
-              height: headerHeight,
-              width: gameWidth,
-            ),
+                height: headerHeight,
+                width: gameWidth,
+                inPlay: _timer.timeCount != 0),
             Container(
                 height: textHeight,
                 alignment: Alignment.center,
