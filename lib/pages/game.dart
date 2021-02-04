@@ -29,10 +29,10 @@ class Game extends StatelessWidget {
     }
 
     // heightSize
-    final headerHeight = maxHeight * (10 / 100);
-    final textHeight = maxHeight * (12 / 100);
-    final buttonsHeight = maxHeight * (75 / 100);
-    final comHeight = maxHeight * (10 / 100);
+    final headerHeight = maxHeight * (8 / 100);
+    final textHeight = maxHeight * (16 / 100);
+    final buttonsHeight = maxHeight * (72 / 100);
+    final comHeight = maxHeight * (8 / 100);
 
     final gameWidth = size.width / 1.05;
 
@@ -41,12 +41,13 @@ class Game extends StatelessWidget {
         body: BackgroundImage(
           bodyWidget: Column(children: [
             Header(
-              height: headerHeight,
-              width: gameWidth,
-            ),
+                height: headerHeight,
+                width: gameWidth,
+                inPlay: _timer.timeCount != 0,
+                isOver: _isOver),
             Container(
                 height: textHeight,
-                alignment: Alignment.center,
+                alignment: Alignment.bottomCenter,
                 child: GameText(inPlay: _timer.timeCount != 0)),
             _isOver
                 ? CounterButtons(width: gameWidth, height: buttonsHeight)

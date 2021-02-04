@@ -14,3 +14,9 @@ final gameTimes = {
   mode.second.toString(): 600,
   mode.third.toString(): 900
 };
+
+final initalCounters = {
+  mode.first.toString(): "10.00",
+  mode.second.toString(): "60.00",
+  mode.third.toString(): "No Limit"
+};

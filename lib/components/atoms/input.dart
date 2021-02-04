@@ -38,7 +38,7 @@ class _InputState extends State<Input> {
                 autofocus: true,
                 initialValue: widget.userName,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 20.0, color: Colors.black),
+                style: TextStyle(fontSize: 15.0, color: Colors.black),
                 decoration: InputDecoration(
                   filled: true,
                   isDense: true,
@@ -46,7 +46,7 @@ class _InputState extends State<Input> {
                   border: InputBorder.none,
                   errorBorder: InputBorder.none,
                   disabledBorder: InputBorder.none,
-                  hintStyle: TextStyle(fontSize: 20.0, color: Colors.grey),
+                  hintStyle: TextStyle(fontSize: 15.0, color: Colors.grey),
                   hintText: hintText,
                   enabledBorder: UnderlineInputBorder(
                     borderSide: new BorderSide(color: Colors.white),
@@ -60,25 +60,45 @@ class _InputState extends State<Input> {
                   _updateName(value);
                 },
               )),
-              ElevatedButton(
-                onPressed: () => {
-                  _formKey.currentState.save(),
-                  widget.onChange(_name),
-                  FocusScope.of(context).unfocus(),
-                  widget.closeDialog()
-                },
-                child: const Text(submitText),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  _formKey.currentState.reset();
-                  FocusScope.of(context).unfocus();
-                  widget.closeDialog();
-                  // Validate will return true if the form is valid, or false if
-                  // the form is invalid.
-                },
-                child: const Text(cancelText),
-              ),
+              SizedBox(
+                  width: 60,
+                  height: 30,
+                  child: OutlinedButton(
+                    child: const Text(submitText,
+                        style: TextStyle(
+                          fontSize: 8,
+                        )),
+                    style: OutlinedButton.styleFrom(
+                      primary: Colors.black,
+                      shape: const StadiumBorder(),
+                      side: const BorderSide(color: Colors.blue),
+                    ),
+                    onPressed: () => {
+                      _formKey.currentState.save(),
+                      widget.onChange(_name),
+                      FocusScope.of(context).unfocus(),
+                      widget.closeDialog()
+                    },
+                  )),
+              SizedBox(
+                  width: 60,
+                  height: 30,
+                  child: OutlinedButton(
+                    child: const Text(cancelText,
+                        style: TextStyle(
+                          fontSize: 8,
+                        )),
+                    style: OutlinedButton.styleFrom(
+                      primary: Colors.black,
+                      shape: const StadiumBorder(),
+                      side: const BorderSide(color: Colors.red),
+                    ),
+                    onPressed: () => {
+                      _formKey.currentState.reset(),
+                      FocusScope.of(context).unfocus(),
+                      widget.closeDialog(),
+                    },
+                  )),
             ]));
   }
 }

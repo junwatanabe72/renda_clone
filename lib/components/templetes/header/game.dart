@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:renda_clone/components/atoms/statefullButton.dart';
+import 'package:renda_clone/components/organisims/game/timeCounter.dart';
 import 'package:renda_clone/stores/timer.dart';
 import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/user.dart';
@@ -9,7 +10,9 @@ import 'package:renda_clone/stores/user.dart';
 class Header extends StatelessWidget with PreferredSizeWidget {
   final double height;
   final double width;
-  Header({this.height, this.width});
+  final bool inPlay;
+  final bool isOver;
+  Header({this.inPlay, this.isOver, this.height, this.width});
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
@@ -32,26 +35,13 @@ class Header extends StatelessWidget with PreferredSizeWidget {
         padding: EdgeInsets.all(5),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          Container(
-              width: width / 2.1,
-              child: Selector<TimerStore, String>(
-                selector: (context, timer) => getCountText(timer),
-                builder: (context, count, child) => Container(
-                    alignment: Alignment.center,
-                    child: Text(count.toString(),
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 40,
-                        ))), // a
-              )),
+          TimeCounter(game: _game.game, inPlay: inPlay, width: this.width),
           Container(
               width: width / 2.1,
               child: StatefullButton(
                 text: "QUIT",
                 onTap: () => {
-                  context
-                      .read<UserStore>()
-                      .updateUserScore(_game.game.mode, _game.game.count),
+                  context.read<UserStore>().updateUserScore(_game.game, isOver),
                   context.read<GameStore>().gameEnd(),
                   context.read<TimerStore>().resetCount(),
                   Navigator.pop(context)

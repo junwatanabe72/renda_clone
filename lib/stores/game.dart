@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:renda_clone/models/game.dart';
+import 'package:renda_clone/models/user.dart';
 import 'package:renda_clone/stores/timer.dart';
 import 'package:renda_clone/util/var/index.dart';
 
@@ -20,8 +21,9 @@ class GameStore extends ChangeNotifier {
     notifyListeners();
   }
 
-  incrementCount(TimerStore timer) {
+  incrementCount(TimerStore timer, User user) {
     if (timer.timeCount == 0) {
+      insertEndlessCount(user);
       inPlayToggle();
       timer.startTimer(inPlayToggle(), game.time);
     }
@@ -30,14 +32,25 @@ class GameStore extends ChangeNotifier {
   }
 
   gameEnd() => {
+        if (_game.inPlay) {inPlayToggle()},
         _game.count = 0,
-        inPlayToggle(),
         notifyListeners(),
       };
+
   inPlayToggle() => {
         _game.inPlay = !_game.inPlay,
         notifyListeners(),
       };
+
+  insertEndlessCount(User user) {
+    switch (game.mode) {
+      case "ENDLESS":
+        _game.count = user.third;
+        break;
+      default:
+        break;
+    }
+  }
 
   @override
   void dispose() {
