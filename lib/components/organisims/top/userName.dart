@@ -19,7 +19,8 @@ class UserName extends StatelessWidget {
         context: context,
         barrierColor: Colors.transparent,
         child: new AlertDialog(
-          contentPadding: EdgeInsets.all(20),
+          titlePadding: EdgeInsets.all(20),
+          // contentPadding: EdgeInsets.all(20),
           content: Input(
             userName: this.name,
             onChange: (String value) =>

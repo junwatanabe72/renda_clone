@@ -29,10 +29,11 @@ class UserStore extends ChangeNotifier {
 
   List<User> sortUsers(String gameMode) {
     final targetUsers = [...users];
+
     List<User> cutUsers(List<User> baseUsers) {
       const number = 10;
       if (baseUsers.length > number) {
-        final cutUser = [...users]..removeRange(number, baseUsers.length);
+        final cutUser = [...baseUsers]..removeRange(number, baseUsers.length);
         return cutUser;
       }
       return baseUsers;
@@ -57,21 +58,23 @@ class UserStore extends ChangeNotifier {
   updateUserScore(Game game, bool inPlay) {
     final mode = game.mode;
     final count = game.count;
-    if (inPlay) {
-      return;
-    }
 
     switch (mode) {
       case "10S":
+        if (inPlay) {
+          return;
+        }
         _user.first = _user.first > count ? _user.first : count;
         break;
       case "60S":
+        if (inPlay) {
+          return;
+        }
         _user.second = _user.second > count ? _user.second : count;
         break;
       default:
         _user.third = count;
         break;
     }
-    // notifyListeners();
   }
 }
