@@ -5,7 +5,7 @@ class TimerStore with ChangeNotifier {
   int _timeCount = 0;
   int get timeCount => _timeCount;
   Timer _timer;
-  static const ms = const Duration(milliseconds: 12);
+  static const ms = const Duration(milliseconds: 10);
 
   startTimer(dynamic callBack, int status) {
     if (_timer != null) {

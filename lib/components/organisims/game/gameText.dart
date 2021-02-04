@@ -23,19 +23,22 @@ class GameText extends StatelessWidget {
                           fontWeight: FontWeight.normal,
                           fontSize: 40,
                         ))))
-            : Column(mainAxisSize: MainAxisSize.max, children: [
-                const Text(leadTextA,
-                    style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      fontSize: 40,
-                      height: 1.0,
-                    )),
-                const Text(leadTextB,
-                    style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      fontSize: 40,
-                      height: 1.0,
-                    ))
-              ]));
+            : Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                    const Text(leadTextA,
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 40,
+                          height: 1.0,
+                        )),
+                    const Text(leadTextB,
+                        style: TextStyle(
+                          fontWeight: FontWeight.normal,
+                          fontSize: 40,
+                          height: 1.0,
+                        ))
+                  ]));
   }
 }

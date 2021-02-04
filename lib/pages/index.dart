@@ -34,7 +34,8 @@ class Top extends StatelessWidget {
     final titleHeight = maxHeight * (24 / 100);
     final userNameHeight = maxHeight * (4 / 100);
     final buttonHeight = maxHeight * (8 / 100);
-    final spaceHeight = maxHeight * (8 / 100);
+    final hiddenButtonHeight = maxHeight * (16 / 100);
+    final spaceHeight = maxHeight * (9 / 100);
     final footerHeight = maxHeight * (32 / 100);
     final comHeight = maxHeight * (8 / 100);
     final betweenNameAndButtonsHeight = maxHeight * (2 / 100);
@@ -70,7 +71,7 @@ class Top extends StatelessWidget {
                     mode: _game.game.mode,
                     width: buttonWidth,
                     height: buttonHeight)
-                : Space(height: spaceHeight),
+                : Space(height: hiddenButtonHeight),
             Space(
               height: spaceHeight,
             ),
