@@ -24,7 +24,6 @@ class UserStore extends ChangeNotifier {
   }
 
   updateUserScore(String gameMode, int count) {
-    print(gameMode);
     switch (gameMode) {
       case "10S":
         _user.first = _user.first > count ? _user.first : count;
@@ -33,7 +32,7 @@ class UserStore extends ChangeNotifier {
         _user.second = _user.second > count ? _user.second : count;
         break;
       default:
-        _user.third = _user.third > count ? _user.third : count;
+        _user.third = count;
         break;
     }
     // notifyListeners();

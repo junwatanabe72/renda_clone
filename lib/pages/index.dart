@@ -30,7 +30,7 @@ class Top extends StatelessWidget {
     }
 
     // heightSize
-    final headerHeight = maxHeight * (8 / 100);
+    final headerHeight = maxHeight * (10 / 100);
     final titleHeight = maxHeight * (20 / 100);
     final userNameHeight = maxHeight * (5 / 100);
     final buttonHeight = maxHeight * (8 / 100);
@@ -49,6 +49,7 @@ class Top extends StatelessWidget {
           bodyWidget: Column(children: [
             Header(
               height: headerHeight,
+              width: buttonWidth,
             ),
             AppTitle(
               width: titleWidth,

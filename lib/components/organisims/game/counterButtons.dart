@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:renda_clone/components/atoms/Button.dart';
 import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/timer.dart';
-// import 'package:renda_clone/util/var/index.dart';
+import 'package:renda_clone/stores/user.dart';
 
 class CounterButtons extends StatelessWidget {
   final double height;
@@ -12,19 +12,10 @@ class CounterButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final _game = context.read<GameStore>().game;
-    // final _inPlay = _game.inPlay;
-    // final _toggle = context.read<GameStore>().inPlayToggle();
-    // final _time = context.read<GameStore>().game.time;
-    // final _increment = context.read<GameStore>().incrementCount();
-    // final bool _inPlay = context.watch<GameStore>().game.inPlay;
+    final _user = context.read<UserStore>();
     final _timer = context.read<TimerStore>();
-    // final onTap = context.read<GameStore>().game.inPlay
-    //     ? () => context.read<GameStore>().incrementCount()
-    //     : () => {
-    //           context.read<GameStore>().startTimer(),
-    //         };
-    final onTap = () => context.read<GameStore>().incrementCount(_timer);
+    final onTap =
+        () => context.read<GameStore>().incrementCount(_timer, _user.user);
 
     return Container(
       height: this.height,

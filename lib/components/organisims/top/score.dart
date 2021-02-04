@@ -13,6 +13,7 @@ class Score extends StatelessWidget {
       children: <Widget>[
         Text(this.mode,
             style: TextStyle(
+              color: Colors.yellow,
               fontWeight: FontWeight.normal,
               fontSize: 20,
               height: 1.0,
