@@ -30,12 +30,13 @@ class Top extends StatelessWidget {
     }
 
     // heightSize
-    final headerHeight = maxHeight * (10 / 100);
-    final titleHeight = maxHeight * (20 / 100);
-    final userNameHeight = maxHeight * (5 / 100);
+    final headerHeight = maxHeight * (8 / 100);
+    final titleHeight = maxHeight * (24 / 100);
+    final userNameHeight = maxHeight * (4 / 100);
     final buttonHeight = maxHeight * (8 / 100);
-    final spaceHeight = maxHeight * (15 / 100);
-    final comHeight = maxHeight * (10 / 100);
+    final spaceHeight = maxHeight * (8 / 100);
+    final footerHeight = maxHeight * (32 / 100);
+    final comHeight = maxHeight * (8 / 100);
     final betweenNameAndButtonsHeight = maxHeight * (2 / 100);
     // widthSize
     final titleWidth = size.width / 2;
@@ -73,7 +74,10 @@ class Top extends StatelessWidget {
             Space(
               height: spaceHeight,
             ),
-            Footer(width: footerWidth),
+            Footer(
+              width: footerWidth,
+              height: footerHeight,
+            ),
             Space(
               height: comHeight,
             )

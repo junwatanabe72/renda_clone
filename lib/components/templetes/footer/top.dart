@@ -5,7 +5,8 @@ import 'package:renda_clone/components/organisims/top/roll.dart';
 // StatelessWidgetを継承
 class Footer extends StatelessWidget {
   final double width;
-  Footer({this.width});
+  final double height;
+  Footer({this.width, this.height});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +19,9 @@ class Footer extends StatelessWidget {
             Container(
                 width: width / 2,
                 child: Column(children: [
-                  Board(),
+                  ConstrainedBox(
+                      constraints: BoxConstraints(minHeight: this.height * 0.9),
+                      child: Board()),
                   Align(
                       alignment: Alignment.bottomRight,
                       child: Text("2021.1.1",

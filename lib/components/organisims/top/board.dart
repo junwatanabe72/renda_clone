@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:renda_clone/components/organisims/top/userTable.dart';
 
 const title = "Leaderboard";
 
@@ -22,12 +23,7 @@ class Board extends StatelessWidget {
               fontSize: 20,
               height: 1.0,
             )),
-        ...new List.generate(
-            10,
-            (i) => Text("${i + 1}.user: 20.23s",
-                style: TextStyle(
-                  height: 1.0,
-                ))),
+        UserTable(),
       ]),
     );
   }
