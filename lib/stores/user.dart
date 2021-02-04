@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:renda_clone/models/game.dart';
 import 'package:renda_clone/models/user.dart';
 
 class UserStore extends ChangeNotifier {
@@ -53,8 +54,14 @@ class UserStore extends ChangeNotifier {
     }
   }
 
-  updateUserScore(String gameMode, int count) {
-    switch (gameMode) {
+  updateUserScore(Game game, bool inPlay) {
+    final mode = game.mode;
+    final count = game.count;
+    if (inPlay) {
+      return;
+    }
+
+    switch (mode) {
       case "10S":
         _user.first = _user.first > count ? _user.first : count;
         break;

@@ -11,7 +11,8 @@ class Header extends StatelessWidget with PreferredSizeWidget {
   final double height;
   final double width;
   final bool inPlay;
-  Header({this.inPlay, this.height, this.width});
+  final bool isOver;
+  Header({this.inPlay, this.isOver, this.height, this.width});
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
@@ -40,9 +41,7 @@ class Header extends StatelessWidget with PreferredSizeWidget {
               child: StatefullButton(
                 text: "QUIT",
                 onTap: () => {
-                  context
-                      .read<UserStore>()
-                      .updateUserScore(_game.game.mode, _game.game.count),
+                  context.read<UserStore>().updateUserScore(_game.game, isOver),
                   context.read<GameStore>().gameEnd(),
                   context.read<TimerStore>().resetCount(),
                   Navigator.pop(context)

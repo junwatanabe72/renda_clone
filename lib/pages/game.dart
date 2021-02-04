@@ -43,7 +43,8 @@ class Game extends StatelessWidget {
             Header(
                 height: headerHeight,
                 width: gameWidth,
-                inPlay: _timer.timeCount != 0),
+                inPlay: _timer.timeCount != 0,
+                isOver: _isOver),
             Container(
                 height: textHeight,
                 alignment: Alignment.bottomCenter,
