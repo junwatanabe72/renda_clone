@@ -15,12 +15,12 @@ class Game extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<UserStore>(context);
-    final _game = Provider.of<GameStore>(context);
-    final _timer = Provider.of<TimerStore>(context);
+    final _inPlay = context.select((GameStore store) => store.game.inPlay);
+    final _timerUp = context.select((TimerStore store) => store.timeUp);
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     var maxHeight = size.height - padding.top - padding.bottom;
-    final _isOver = _timer.timeCount != _game.game.time;
+
     // アプリ描画エリアの縦サイズを取得
     if (Platform.isAndroid) {
       maxHeight = size.height - padding.top - kToolbarHeight;
@@ -43,22 +43,22 @@ class Game extends StatelessWidget {
             Header(
                 height: headerHeight,
                 width: gameWidth,
-                inPlay: _timer.timeCount != 0,
-                isOver: _isOver),
+                inPlay: _inPlay,
+                timeUp: _timerUp),
             Container(
                 height: textHeight,
                 alignment: Alignment.bottomCenter,
-                child: GameText(inPlay: _timer.timeCount != 0)),
-            _isOver
-                ? CounterButtons(width: gameWidth, height: buttonsHeight)
-                : const Padding(
+                child: GameText(inPlay: _inPlay)),
+            _timerUp
+                ? const Padding(
                     padding: EdgeInsets.all(20),
                     child: Text("Time`s Up!",
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontSize: 40,
                           height: 1.0,
-                        ))),
+                        )))
+                : CounterButtons(width: gameWidth, height: buttonsHeight),
             Space(
               height: comHeight,
             )

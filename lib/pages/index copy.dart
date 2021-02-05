@@ -7,7 +7,7 @@ import 'package:renda_clone/components/organisims/top/topPageButton.dart';
 import 'package:renda_clone/components/organisims/top/userName.dart';
 import 'package:renda_clone/components/templetes/backgroundImage.dart';
 import 'package:renda_clone/components/templetes/footer/top.dart';
-import 'package:renda_clone/stores/game.dart';
+// import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/user.dart';
 import "../components/templetes/header/top.dart";
 

@@ -72,7 +72,8 @@ class Top extends StatelessWidget {
                 ? TopPageButtons(
                     changeGameMode: _changeGameMode,
                     width: buttonWidth,
-                    height: buttonHeight)
+                    height: buttonHeight,
+                    user: _user)
                 : Space(height: hiddenButtonHeight),
             Space(
               height: spaceHeight,
