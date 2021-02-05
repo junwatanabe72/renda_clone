@@ -15,21 +15,21 @@ class UserStore extends ChangeNotifier {
   createUser(String value) {
     if (value.length == 0) {
       _user = null;
-       notifyListeners();
+      notifyListeners();
       return;
     }
     if (_users.length != 0) {
       final existUser = _users.where((user) => user.name == value);
       if (existUser.length != 0) {
         _user = existUser.first;
-         notifyListeners();
+        notifyListeners();
         return;
       }
     }
     final User newUser = User(name: value, first: 0, second: 0, third: 0);
     _users..add(newUser);
     _user = newUser;
-     notifyListeners();
+    notifyListeners();
     return;
   }
 
@@ -71,18 +71,21 @@ class UserStore extends ChangeNotifier {
           return;
         }
         _user.first = _user.first > count ? _user.first : count;
+        notifyListeners();
         break;
       case "60S":
         if (inPlay) {
           return;
         }
         _user.second = _user.second > count ? _user.second : count;
+        notifyListeners();
         break;
       default:
-      if (count == 0) {
+        if (count == 0) {
           return;
         }
         _user.third = count;
+        notifyListeners();
         break;
     }
   }

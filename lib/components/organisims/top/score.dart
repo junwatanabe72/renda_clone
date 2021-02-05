@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:renda_clone/models/user.dart';
 import 'package:renda_clone/stores/user.dart';
 
 class Score extends StatelessWidget {
@@ -19,40 +18,37 @@ class Score extends StatelessWidget {
               fontSize: 20,
               height: 1.0,
             )),
-        Selector<UserStore, User>(
-            selector: (context, userStore) => userStore.user,
-            builder: (context, user, child) => switchMode(user, this.mode))
+        switchScore(this.mode),
       ],
     ));
   }
 
-  Widget switchMode(User user, String mode) {
-    final scoreText =
-        (dynamic number) => number == null ? "---" : number.toString();
+  Widget switchScore(String mode) {
+    final scoreText = (number) => number == null ? "---" : number.toString();
+    final textWidget = (int num) => Text(scoreText(num),
+        style: TextStyle(
+          fontWeight: FontWeight.normal,
+          fontSize: 20,
+          height: 1.0,
+        ));
     switch (mode) {
       case "10S":
-        return Text(scoreText(user?.first),
-            style: TextStyle(
-              fontWeight: FontWeight.normal,
-              fontSize: 20,
-              height: 1.0,
-            ));
+        return Selector<UserStore, int>(
+          selector: (context, userStore) => userStore.user?.first,
+          builder: (context, user, child) => textWidget(user),
+        );
         break;
       case "60S":
-        return Text(scoreText(user?.second),
-            style: TextStyle(
-              fontWeight: FontWeight.normal,
-              fontSize: 20,
-              height: 1.0,
-            ));
+        return Selector<UserStore, int>(
+          selector: (context, userStore) => userStore.user?.second,
+          builder: (context, user, child) => textWidget(user),
+        );
         break;
       default:
-        return Text(scoreText(user?.third),
-            style: TextStyle(
-              fontWeight: FontWeight.normal,
-              fontSize: 20,
-              height: 1.0,
-            ));
+        return Selector<UserStore, int>(
+          selector: (context, userStore) => userStore.user?.third,
+          builder: (context, user, child) => textWidget(user),
+        );
         break;
     }
   }

@@ -16,9 +16,9 @@ class Top extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final _user = Provider.of<UserStore>(context);
     final _user = context.select((UserStore store) => store.user);
-    final _createUser = context.read<UserStore>().createUser;
-    final _changeGameMode = context.read<GameStore>().changeGameMode;
+    // final _game = Provider.of<GameStore>(context);
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     var maxHeight = size.height - padding.top - padding.bottom;
@@ -62,17 +62,13 @@ class Top extends StatelessWidget {
             UserName(
               width: userNameWidth,
               height: userNameHeight,
-              createUser: _createUser,
               name: _user != null ? _user.name : "",
             ),
             Space(
               height: betweenNameAndButtonsHeight,
             ),
             _user != null
-                ? TopPageButtons(
-                    changeGameMode: _changeGameMode,
-                    width: buttonWidth,
-                    height: buttonHeight)
+                ? TopPageButtons(width: buttonWidth, height: buttonHeight)
                 : Space(height: hiddenButtonHeight),
             Space(
               height: spaceHeight,
