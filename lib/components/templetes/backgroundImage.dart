@@ -9,7 +9,7 @@ class BackgroundImage extends StatelessWidget {
     return Container(
         decoration: new BoxDecoration(
           image: new DecorationImage(
-            image: new AssetImage("images/lake.jpg"),
+            image: new AssetImage("images/universe.jpg"),
             fit: BoxFit.cover,
           ),
         ),

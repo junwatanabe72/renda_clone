@@ -14,17 +14,23 @@ class UserStore extends ChangeNotifier {
 
   createUser(String value) {
     if (value.length == 0) {
-      return _user = null;
+      _user = null;
+      notifyListeners();
+      return;
     }
     if (_users.length != 0) {
       final existUser = _users.where((user) => user.name == value);
       if (existUser.length != 0) {
-        return _user = existUser.first;
+        _user = existUser.first;
+        notifyListeners();
+        return;
       }
     }
     final User newUser = User(name: value, first: 0, second: 0, third: 0);
     _users..add(newUser);
-    return _user = newUser;
+    _user = newUser;
+    notifyListeners();
+    return;
   }
 
   List<User> sortUsers(String gameMode) {
@@ -65,15 +71,21 @@ class UserStore extends ChangeNotifier {
           return;
         }
         _user.first = _user.first > count ? _user.first : count;
+        notifyListeners();
         break;
       case "60S":
         if (inPlay) {
           return;
         }
         _user.second = _user.second > count ? _user.second : count;
+        notifyListeners();
         break;
       default:
+        if (count == 0) {
+          return;
+        }
         _user.third = count;
+        notifyListeners();
         break;
     }
   }

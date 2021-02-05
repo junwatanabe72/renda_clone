@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:renda_clone/stores/user.dart';
 
 class Score extends StatelessWidget {
   final String mode;
-  final int score;
-  Score({this.score, @required this.mode});
+  Score({@required this.mode});
 
   @override
   Widget build(BuildContext context) {
-    final scoreText = this.score == null ? "---" : this.score.toString();
     return Center(
         child: Column(
       children: <Widget>[
@@ -18,15 +18,38 @@ class Score extends StatelessWidget {
               fontSize: 20,
               height: 1.0,
             )),
-        Text(
-          scoreText,
-          style: TextStyle(
-            fontWeight: FontWeight.normal,
-            fontSize: 20,
-            height: 1.0,
-          ),
-        )
+        switchScore(this.mode),
       ],
     ));
+  }
+
+  Widget switchScore(String mode) {
+    final scoreText = (number) => number == null ? "---" : number.toString();
+    final textWidget = (int num) => Text(scoreText(num),
+        style: TextStyle(
+          fontWeight: FontWeight.normal,
+          fontSize: 20,
+          height: 1.0,
+        ));
+    switch (mode) {
+      case "10S":
+        return Selector<UserStore, int>(
+          selector: (context, userStore) => userStore.user?.first,
+          builder: (context, user, child) => textWidget(user),
+        );
+        break;
+      case "60S":
+        return Selector<UserStore, int>(
+          selector: (context, userStore) => userStore.user?.second,
+          builder: (context, user, child) => textWidget(user),
+        );
+        break;
+      default:
+        return Selector<UserStore, int>(
+          selector: (context, userStore) => userStore.user?.third,
+          builder: (context, user, child) => textWidget(user),
+        );
+        break;
+    }
   }
 }

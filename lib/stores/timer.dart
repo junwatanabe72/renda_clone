@@ -33,7 +33,9 @@ class TimerStore with ChangeNotifier {
 
   resetCount() {
     _timeCount = 0;
-    _timer.cancel();
+    if (_timer != null) {
+      _timer.cancel();
+    }
     notifyListeners();
   }
 
