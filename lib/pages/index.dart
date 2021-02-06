@@ -32,7 +32,7 @@ class Top extends StatelessWidget {
 
     // heightSize
     final headerHeight = maxHeight * (8 / 100);
-    final titleHeight = maxHeight * (24 / 100);
+    final titleHeight = maxHeight * (16 / 100);
     final userNameHeight = maxHeight * (4 / 100);
     final buttonHeight = maxHeight * (8 / 100);
     final hiddenButtonHeight = maxHeight * (16 / 100);

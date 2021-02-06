@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:renda_clone/components/atoms/button.dart';
 import 'package:renda_clone/util/hook/lengthLimit.dart';
 
 const hintText = 'Enter Nickname...';
 const submitText = "done";
 const cancelText = "cancel";
+const maxLength = 10;
 
 class UserTextField extends StatelessWidget {
   final String userName;
@@ -47,7 +49,7 @@ class UserTextField extends StatelessWidget {
             ),
           ),
           inputFormatters: [
-            LengthLimitingTextFieldFormatterFixed(5),
+            LengthLimitingTextFieldFormatterFixed(maxLength),
           ],
           onChanged: (value) {
             this.onChange(value);
@@ -57,43 +59,29 @@ class UserTextField extends StatelessWidget {
           SizedBox(
               width: 80,
               height: 30,
-              child: OutlinedButton(
-                child: const Text(submitText,
-                    style: TextStyle(
-                      fontSize: 14,
-                    )),
-                style: OutlinedButton.styleFrom(
-                  primary: Colors.blue,
-                  shape: const StadiumBorder(),
-                  side: const BorderSide(color: Colors.blue),
-                ),
-                onPressed: () => {
-                  this.createUser(this.controller.text),
-                  this.onChange(this.controller.text),
-                  FocusScope.of(context).unfocus(),
-                  this.closeDialog()
-                },
-              )),
+              child: Button(
+                  text: submitText,
+                  color: Colors.blue,
+                  selected: true,
+                  onTap: () => {
+                        this.createUser(this.controller.text),
+                        this.onChange(this.controller.text),
+                        FocusScope.of(context).unfocus(),
+                        this.closeDialog()
+                      })),
           SizedBox(
               width: 80,
               height: 30,
-              child: OutlinedButton(
-                child: const Text(cancelText,
-                    style: TextStyle(
-                      fontSize: 14,
-                    )),
-                style: OutlinedButton.styleFrom(
-                  primary: Colors.red,
-                  shape: const StadiumBorder(),
-                  side: const BorderSide(color: Colors.red),
-                ),
-                onPressed: () => {
-                  this.controller.text = this.userName,
-                  this.onChange(this.controller.text),
-                  FocusScope.of(context).unfocus(),
-                  this.closeDialog(),
-                },
-              )),
+              child: Button(
+                  text: cancelText,
+                  color: Colors.red,
+                  selected: true,
+                  onTap: () => {
+                        this.controller.text = this.userName,
+                        this.onChange(this.controller.text),
+                        FocusScope.of(context).unfocus(),
+                        this.closeDialog(),
+                      })),
         ]),
       ]),
     );

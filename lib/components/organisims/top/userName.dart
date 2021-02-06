@@ -36,8 +36,7 @@ class _UserNameState extends State<UserName> {
   void initState() {
     super.initState();
     _name = widget.name;
-    _textEditingController =
-        TextEditingController(text: widget.name); // <- こんな感じ
+    _textEditingController = TextEditingController(text: widget.name);
   }
 
   @override
@@ -48,12 +47,15 @@ class _UserNameState extends State<UserName> {
 
   @override
   Widget build(BuildContext context) {
-    _showDialog() async {
+    final Widget textWidget = _name != ""
+        ? Text(_name, style: TextStyle(color: Colors.black))
+        : Text('Enter Nickname...', style: TextStyle(color: Colors.grey));
+    Future<Null> _showDialog() async {
       await showDialog<String>(
           context: context,
           barrierColor: Colors.transparent,
           builder: (context) => Padding(
-                padding: EdgeInsets.only(top: 300.0),
+                padding: EdgeInsets.only(top: 200.0),
                 child: AlertDialog(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
@@ -67,9 +69,6 @@ class _UserNameState extends State<UserName> {
               ));
     }
 
-    final Widget textWidget = _name != ""
-        ? Text(_name, style: TextStyle(color: Colors.black))
-        : Text('Enter Nickname...', style: TextStyle(color: Colors.grey));
     return Container(
         height: widget.height,
         width: widget.width,

@@ -46,8 +46,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: Top.routeName,
       routes: <String, WidgetBuilder>{
-        Top.routeName: (BuildContext context) => Top(),
-        Game.routeName: (BuildContext context) => Game(),
+        Top.routeName: (BuildContext context) => SafeArea(child: Top()),
+        Game.routeName: (BuildContext context) => SafeArea(child: Game()),
       },
     );
   }
