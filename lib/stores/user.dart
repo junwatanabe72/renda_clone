@@ -4,10 +4,11 @@ import 'package:renda_clone/models/user.dart';
 
 class UserStore extends ChangeNotifier {
   // final User initalUser = User(name: "test", first: 0, second: 0, third: 0);
+  // User _user = User(name: "test", first: 1, second: 2, third: 3);
   User _user;
   List<User> _users = [
-    User(name: "test", first: 1, second: 2, third: 3),
-    User(name: "jun", first: 2, second: 4, third: 1)
+    // User(name: "test", first: 1, second: 2, third: 3),
+    // User(name: "jun", first: 2, second: 4, third: 1)
   ];
   User get user => _user;
   List<User> get users => _users;
