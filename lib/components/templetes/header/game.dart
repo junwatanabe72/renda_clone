@@ -11,8 +11,8 @@ class Header extends StatelessWidget with PreferredSizeWidget {
   final double height;
   final double width;
   final bool inPlay;
-  final bool isOver;
-  Header({this.inPlay, this.isOver, this.height, this.width});
+  final bool timeUp;
+  Header({this.inPlay, this.timeUp, this.height, this.width});
   @override
   Size get preferredSize => Size.fromHeight(kToolbarHeight);
 
@@ -28,20 +28,23 @@ class Header extends StatelessWidget with PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _game = Provider.of<GameStore>(context);
+    final _count = context.select((GameStore store) => store.game.count);
+    final _mode = context.select((GameStore store) => store.game.mode);
     return Container(
         width: this.width,
         height: this.height,
         padding: EdgeInsets.all(5),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          TimeCounter(game: _game.game, inPlay: inPlay, width: this.width),
+          TimeCounter(width: this.width),
           Container(
               width: width / 2.1,
               child: StatefullButton(
                 text: "QUIT",
                 onTap: () => {
-                  context.read<UserStore>().updateUserScore(_game.game, isOver),
+                  context
+                      .read<UserStore>()
+                      .updateUserScore(_mode, _count, this.timeUp),
                   context.read<GameStore>().gameEnd(),
                   context.read<TimerStore>().resetCount(),
                   Navigator.pop(context)

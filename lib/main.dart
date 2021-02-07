@@ -1,31 +1,30 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 import 'package:renda_clone/stores/game.dart';
 import 'package:renda_clone/stores/timer.dart';
 import 'package:renda_clone/stores/user.dart';
+import 'package:renda_clone/util/hook/initalData.dart';
 import 'pages/game.dart';
 import 'pages/index.dart';
-import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIOverlays([]);
-  runApp(MultiProvider(
-      // MultiProviderは複数のChangeNotifierProviderを格納できるProviderのこと
-      // providersにList<ChangeNotifierProvider>を指定する
-      providers: [
-        // ChangeNotifierProviderはcreateにデリゲートを取り、この中でChangeNotifierを初期化して返す
-        ChangeNotifierProvider<UserStore>(
-          create: (context) => UserStore(),
-        ),
-        ChangeNotifierProvider<GameStore>(
-          create: (context) => GameStore(),
-        ),
-        ChangeNotifierProvider<TimerStore>(
-          create: (context) => TimerStore(),
-        )
-      ], child: MyApp()));
+  final data = await getIntialData();
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<UserStore>(
+      create: (context) =>
+          UserStore()..setInitalData(data["user"], data["users"]),
+    ),
+    ChangeNotifierProvider<GameStore>(
+      create: (context) => GameStore(),
+    ),
+    ChangeNotifierProvider<TimerStore>(
+      create: (context) => TimerStore(),
+    )
+  ], child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -46,8 +45,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: Top.routeName,
       routes: <String, WidgetBuilder>{
-        Top.routeName: (BuildContext context) => Top(),
-        Game.routeName: (BuildContext context) => Game(),
+        Top.routeName: (BuildContext context) => SafeArea(child: Top()),
+        Game.routeName: (BuildContext context) => SafeArea(child: Game()),
       },
     );
   }

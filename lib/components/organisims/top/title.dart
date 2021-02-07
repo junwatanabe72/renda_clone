@@ -17,7 +17,7 @@ class AppTitle extends StatelessWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     height: 1.0,
-                    fontSize: 50,
+                    fontSize: 40,
                   )))
               .toList()
         ]));

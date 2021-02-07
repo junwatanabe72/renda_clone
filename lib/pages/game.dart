@@ -15,12 +15,12 @@ class Game extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<UserStore>(context);
-    final _game = Provider.of<GameStore>(context);
-    final _timer = Provider.of<TimerStore>(context);
+    final _inPlay = context.select((GameStore store) => store.game.inPlay);
+    final _timerUp = context.select((TimerStore store) => store.timeUp);
     final size = MediaQuery.of(context).size;
     final padding = MediaQuery.of(context).padding;
     var maxHeight = size.height - padding.top - padding.bottom;
-    final _isOver = _timer.timeCount != _game.game.time;
+
     // アプリ描画エリアの縦サイズを取得
     if (Platform.isAndroid) {
       maxHeight = size.height - padding.top - kToolbarHeight;
@@ -31,7 +31,7 @@ class Game extends StatelessWidget {
     // heightSize
     final headerHeight = maxHeight * (8 / 100);
     final textHeight = maxHeight * (16 / 100);
-    final buttonsHeight = maxHeight * (72 / 100);
+    final buttonsHeight = maxHeight * (68 / 100);
     final comHeight = maxHeight * (8 / 100);
 
     final gameWidth = size.width / 1.05;
@@ -40,25 +40,27 @@ class Game extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         body: BackgroundImage(
           bodyWidget: Column(children: [
-            Header(
-                height: headerHeight,
-                width: gameWidth,
-                inPlay: _timer.timeCount != 0,
-                isOver: _isOver),
+            Padding(
+                padding: EdgeInsets.only(top: 00.0),
+                child: Header(
+                    height: headerHeight,
+                    width: gameWidth,
+                    inPlay: _inPlay,
+                    timeUp: _timerUp)),
             Container(
                 height: textHeight,
                 alignment: Alignment.bottomCenter,
-                child: GameText(inPlay: _timer.timeCount != 0)),
-            _isOver
-                ? CounterButtons(width: gameWidth, height: buttonsHeight)
-                : const Padding(
+                child: GameText(inPlay: _inPlay)),
+            _timerUp
+                ? const Padding(
                     padding: EdgeInsets.all(20),
                     child: Text("Time`s Up!",
                         style: TextStyle(
                           fontWeight: FontWeight.normal,
                           fontSize: 40,
                           height: 1.0,
-                        ))),
+                        )))
+                : CounterButtons(width: gameWidth, height: buttonsHeight),
             Space(
               height: comHeight,
             )
