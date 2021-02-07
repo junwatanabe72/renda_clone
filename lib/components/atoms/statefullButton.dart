@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:renda_clone/util/hook/soundPool.dart';
 
 class StatefullButton extends StatefulWidget {
   final String text;
@@ -21,7 +22,10 @@ class _StatefullButtonState extends State<StatefullButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.onTap,
+      onTap: () async {
+        SoundPool.hitSound();
+        widget.onTap();
+      },
       onTapUp: (TapUpDetails tapUpDetails) => {_handleTap()},
       onTapDown: (TapDownDetails tapDownDetails) => {_handleTap()},
       child: Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:renda_clone/util/hook/soundPool.dart';
 
 class Button extends StatelessWidget {
   final String text;
@@ -18,8 +19,11 @@ class Button extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
-      // onTapDown: onTap,
+      onTap: () async {
+        SoundPool.hitSound();
+        this.onTap();
+      },
+      // onTap: onTap,
       child: Container(
           width: this.width,
           height: this.height,

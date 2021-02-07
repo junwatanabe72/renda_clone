@@ -54,6 +54,7 @@ class UserStore extends ChangeNotifier {
   createUser(String name) async {
     if (name.length == 0) {
       _user = null;
+      setCurrentUser("");
       notifyListeners();
       return;
     }
