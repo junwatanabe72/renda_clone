@@ -10,9 +10,9 @@ final gameModes = {
   mode.third.toString(): "ENDLESS"
 };
 final gameTimes = {
-  mode.first.toString(): 200,
-  mode.second.toString(): 400,
-  mode.third.toString(): 900
+  mode.first.toString(): 1000,
+  mode.second.toString(): 6000,
+  mode.third.toString(): 0
 };
 
 final initalCounters = {
