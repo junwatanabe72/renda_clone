@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
           bodyColor: Colors.white,
         ),
         primarySwatch: Colors.blue,
+        fontFamily: 'GenSenRounded',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       initialRoute: Top.routeName,

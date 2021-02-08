@@ -10,7 +10,7 @@ class Board extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       width: MediaQuery.of(context).size.width / 2,
       decoration: BoxDecoration(
-          color: Colors.red.withOpacity(0.05),
+          color: Colors.red.withOpacity(0.2),
           borderRadius: BorderRadius.circular(5),
           border: Border.all(
             color: Colors.red.withOpacity(0.5),

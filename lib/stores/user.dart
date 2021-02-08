@@ -55,6 +55,7 @@ class UserStore extends ChangeNotifier {
     if (name.length == 0) {
       _user = null;
       setCurrentUser("");
+      // UserDatabase.db.deleteAll();
       notifyListeners();
       return;
     }

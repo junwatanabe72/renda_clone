@@ -58,14 +58,9 @@ class UserDatabase {
     return list;
   }
 
-  // Future<int> deleteUsersWithId(int id) async {
-  //   final db = await database;
-  //   return db.delete("Users", where: "id= ?", whereArgs: [id]);
-  // }
-
   void deleteAll() async {
     final db = await database;
-    db.delete("users");
+    await db.delete("users");
   }
 
   Future<int> updateUser(User user) async {

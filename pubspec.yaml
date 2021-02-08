@@ -33,3 +33,11 @@ flutter:
 flutter_native_splash:
   image: "images/splash.png"
   color: "ffffff"
+
+  fonts:
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans-Bold.ttf
+          style: italic
+          weight: 700 # assets/fonts/OpenSans-Bold.ttfのウェイトを指定
