@@ -8,8 +8,10 @@ class Button extends StatelessWidget {
   final double height;
   final Function onTap;
   final Color color;
+  final Color fontColor;
   Button(
       {this.text = "",
+      this.fontColor = Colors.white,
       this.color = Colors.red,
       @required this.onTap,
       @required this.selected,
@@ -38,7 +40,11 @@ class Button extends StatelessWidget {
                     : this.color.withOpacity(0.1),
                 width: 2.0,
               )),
-          child: Center(child: Text(this.text))),
+          child: Center(
+              child: Text(this.text,
+                  style: TextStyle(
+                    color: this.fontColor,
+                  )))),
     );
   }
 }

@@ -30,10 +30,6 @@ flutter:
     - images/universe.jpg
     - images/splash.png
     - assets/hit.mp3
-flutter_native_splash:
-  image: "images/splash.png"
-  color: "ffffff"
-
   fonts:
     - family: OpenSans
       fonts:
@@ -41,3 +37,6 @@ flutter_native_splash:
         - asset: assets/fonts/OpenSans-Bold.ttf
           style: italic
           weight: 700 # assets/fonts/OpenSans-Bold.ttfのウェイトを指定
+flutter_native_splash:
+  image: "images/splash.png"
+  color: "ffffff"

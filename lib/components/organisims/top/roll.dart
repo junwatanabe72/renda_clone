@@ -18,7 +18,7 @@ class Roll extends StatelessWidget {
                     )))
                 .toList(),
             const Padding(
-              padding: EdgeInsets.all(3),
+              padding: EdgeInsets.all(5),
             )
           ]))
       .toList();

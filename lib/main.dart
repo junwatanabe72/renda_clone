@@ -34,12 +34,25 @@ class MyApp extends StatelessWidget {
       title: 'renda_clone',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textTheme: TextTheme(
-          bodyText1: TextStyle(),
-          bodyText2: TextStyle(),
-        ).apply(
-          bodyColor: Colors.white,
-        ),
+        textTheme: ThemeData.light()
+            .textTheme
+            .copyWith(
+                bodyText1: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+                bodyText2: TextStyle(
+                    fontFamily: 'OpenSans',
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12)
+
+                // textTheme: TextTheme(
+                //   bodyText1: TextStyle(),
+                //   bodyText2: TextStyle(),
+                )
+            .apply(
+              bodyColor: Colors.white,
+            ),
         primarySwatch: Colors.blue,
         fontFamily: 'GenSenRounded',
         visualDensity: VisualDensity.adaptivePlatformDensity,

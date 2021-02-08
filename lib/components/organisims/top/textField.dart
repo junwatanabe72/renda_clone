@@ -62,6 +62,7 @@ class UserTextField extends StatelessWidget {
               child: Button(
                   text: submitText,
                   color: Colors.blue,
+                  fontColor: Colors.black,
                   selected: true,
                   onTap: () => {
                         this.createUser(this.controller.text),
@@ -75,6 +76,7 @@ class UserTextField extends StatelessWidget {
               child: Button(
                   text: cancelText,
                   color: Colors.red,
+                  fontColor: Colors.black,
                   selected: true,
                   onTap: () => {
                         this.controller.text = this.userName,

@@ -22,26 +22,29 @@ class _StatefullButtonState extends State<StatefullButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () async {
-        SoundPool.hitSound();
-        widget.onTap();
-      },
-      onTapUp: (TapUpDetails tapUpDetails) => {_handleTap()},
-      onTapDown: (TapDownDetails tapDownDetails) => {_handleTap()},
-      child: Container(
-          width: widget.width,
-          decoration: BoxDecoration(
-              color: _active
-                  ? Colors.red.withOpacity(0.2)
-                  : Colors.red.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(5),
-              border: Border.all(
+        onTap: () async {
+          SoundPool.hitSound();
+          widget.onTap();
+        },
+        onTapUp: (TapUpDetails tapUpDetails) => {_handleTap()},
+        onTapDown: (TapDownDetails tapDownDetails) => {_handleTap()},
+        child: Container(
+            width: widget.width,
+            decoration: BoxDecoration(
                 color: _active
-                    ? Colors.red.withOpacity(0.5)
+                    ? Colors.red.withOpacity(0.2)
                     : Colors.red.withOpacity(0.1),
-                width: 2.0,
-              )),
-          child: Center(child: Text(widget.text))),
-    );
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(
+                  color: _active
+                      ? Colors.red.withOpacity(0.5)
+                      : Colors.red.withOpacity(0.1),
+                  width: 2.0,
+                )),
+            child: Center(
+                child: Text(widget.text,
+                    style: TextStyle(
+                      fontSize: 20,
+                    )))));
   }
 }
